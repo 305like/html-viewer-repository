@@ -12,13 +12,13 @@
     .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}.card{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(14,29,48,.88)}.num{font-size:32px;font-weight:900;color:var(--blue)}.label{color:var(--muted);font-size:13px;margin-top:4px}
     .finding{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 24px}.note{padding:16px 18px;border-left:4px solid var(--amber);background:#19253a;border-radius:10px;line-height:1.65}.note strong{color:var(--amber)}.note.alert{border-color:var(--red)}.note.alert strong{color:var(--red)}
     .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:10px 15px;border-radius:999px;cursor:pointer}.tab.active{background:var(--blue);border-color:var(--blue);color:#001525;font-weight:800}
-    .pane{display:none}.pane.active{display:block}.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.tool{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 12px;border-radius:10px;cursor:pointer}.search{margin-left:auto;min-width:260px;border:1px solid var(--line);background:#091726;color:var(--text);padding:10px 13px;border-radius:10px}
-    .tree{padding:34px 24px 54px;border:1px solid var(--line);border-radius:18px;background:rgba(10,23,39,.86);overflow:auto}.tree ul{display:flex;justify-content:center;list-style:none;margin:0;padding:32px 0 0;position:relative;min-width:max-content}.tree>ul{padding-top:0}.tree li{position:relative;text-align:center;padding:32px 8px 0}.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:32px;border-top:2px solid var(--line)}.tree li::after{right:auto;left:50%;border-left:2px solid var(--line)}.tree li:only-child::before,.tree li:only-child::after{display:none}.tree li:only-child{padding-top:0}.tree li:first-child::before,.tree li:last-child::after{border:0}.tree li:last-child::before{border-right:2px solid var(--line);border-radius:0 10px 0 0}.tree li:first-child::after{border-radius:10px 0 0 0}.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:32px;border-left:2px solid var(--line)}
-    .node{display:block;position:relative;width:190px;min-height:74px;margin:0 auto;padding:11px 12px;border:1px solid #385878;border-radius:11px;background:linear-gradient(145deg,#132943,#0d1d30);cursor:pointer;box-shadow:0 7px 18px #0005}.node:hover{border-color:var(--blue);transform:translateY(-1px)}.node .arrow{position:absolute;right:7px;top:6px;color:var(--blue);font-size:11px}.node .title{display:block;padding:0 10px;font-weight:750;line-height:1.35}.node .fn{display:block;margin-top:7px;color:var(--muted);font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.node .count{display:block;margin-top:6px;color:var(--cyan);font-size:11px;line-height:1.35}.tree>ul>li>.node{width:250px;border-color:var(--blue);background:linear-gradient(145deg,#17476b,#102841)}.tree>ul>li>ul>li>.node{border-color:#3f807c}.branch.collapsed>ul{display:none}.branch.collapsed::before,.branch.collapsed::after{border-color:transparent}.leaf .node{cursor:default}.leaf .arrow{visibility:hidden}.tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}.tag.active{background:#123b38;color:var(--green)}.tag.shared{background:#263251;color:#9ebdff}.tag.disabled{background:#452332;color:#ff91a2}
+    .pane{display:none}.pane.active{display:block}.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.tool{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 12px;border-radius:10px;cursor:pointer}.tool:hover{border-color:var(--blue)}.search{margin-left:auto;min-width:260px;border:1px solid var(--line);background:#091726;color:var(--text);padding:10px 13px;border-radius:10px}.zoom-controls{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid var(--line);border-radius:11px;background:#091726}.zoom-controls .tool{min-width:38px;padding:6px 9px;border:0;background:transparent}.zoom-label{min-width:52px;text-align:center;color:var(--cyan);font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
+    .tree{padding:34px 24px 54px;border:1px solid var(--line);border-radius:18px;background:rgba(10,23,39,.86);overflow:auto;touch-action:pan-x pan-y}.tree-canvas{position:relative;min-width:100%;min-height:220px}.tree-content{position:absolute;top:0;left:0;width:max-content;transform-origin:top left;transition:transform .18s ease}.tree-content.pinching{transition:none}.tree ul{display:flex;justify-content:center;list-style:none;margin:0;padding:32px 0 0;position:relative;min-width:max-content}.tree-content>ul{padding-top:0}.tree li{position:relative;text-align:center;padding:32px 8px 0}.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:32px;border-top:2px solid var(--line)}.tree li::after{right:auto;left:50%;border-left:2px solid var(--line)}.tree li:only-child::before,.tree li:only-child::after{display:none}.tree li:only-child{padding-top:0}.tree li:first-child::before,.tree li:last-child::after{border:0}.tree li:last-child::before{border-right:2px solid var(--line);border-radius:0 10px 0 0}.tree li:first-child::after{border-radius:10px 0 0 0}.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:32px;border-left:2px solid var(--line)}
+    .node{display:block;position:relative;width:190px;min-height:74px;margin:0 auto;padding:11px 12px;border:1px solid #385878;border-radius:11px;background:linear-gradient(145deg,#132943,#0d1d30);cursor:pointer;box-shadow:0 7px 18px #0005}.node:hover{border-color:var(--blue);transform:translateY(-1px)}.node .arrow{position:absolute;right:7px;top:6px;color:var(--blue);font-size:11px}.node .title{display:block;padding:0 10px;font-weight:750;line-height:1.35}.node .fn{display:block;margin-top:7px;color:var(--muted);font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.node .count{display:block;margin-top:6px;color:var(--cyan);font-size:11px;line-height:1.35}.tree-content>ul>li>.node{width:250px;border-color:var(--blue);background:linear-gradient(145deg,#17476b,#102841)}.tree-content>ul>li>ul>li>.node{border-color:#3f807c}.branch.collapsed>ul{display:none}.branch.collapsed::before,.branch.collapsed::after{border-color:transparent}.leaf .node{cursor:default}.leaf .arrow{visibility:hidden}.tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}.tag.active{background:#123b38;color:var(--green)}.tag.shared{background:#263251;color:#9ebdff}.tag.disabled{background:#452332;color:#ff91a2}
     .tree-hint{color:var(--muted);font-size:12px;margin:0 0 12px}.tree-hint b{color:var(--cyan)}
     .tablebox{border:1px solid var(--line);border-radius:16px;overflow:auto;background:rgba(10,23,39,.86)}table{border-collapse:collapse;width:100%;min-width:920px}th,td{padding:12px 14px;border-bottom:1px solid #1d334d;text-align:left;vertical-align:top}th{position:sticky;top:0;background:#11243a;color:#bcd0e9;font-size:12px;letter-spacing:.04em}td{font-size:13px}code{color:#9ed9ff;font:12px ui-monospace,SFMono-Regular,Consolas,monospace}.muted{color:var(--muted)}.status-reachable{color:var(--green);font-weight:800}.status-detached{color:var(--red);font-weight:800}
     .detached-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.detached-card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px}.detached-card h3{margin:0 0 8px;font-size:16px}.detached-card p{margin:0;color:var(--muted);line-height:1.55;font-size:13px}.source{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.7}.hidden{display:none!important}
-    @media(max-width:800px){.wrap{padding:14px}.hero{padding:21px}.cards{grid-template-columns:1fr 1fr}.finding,.detached-grid{grid-template-columns:1fr}.search{margin-left:0;width:100%}.tree{padding-left:14px;padding-right:14px}.node{width:168px}.tree>ul>li>.node{width:220px}}
+    @media(max-width:800px){.wrap{padding:14px}.hero{padding:21px}.cards{grid-template-columns:1fr 1fr}.finding,.detached-grid{grid-template-columns:1fr}.search{margin-left:0;width:100%}.zoom-controls{order:3}.tree{padding-left:14px;padding-right:14px}.node{width:168px}.tree-content>ul>li>.node{width:220px}}
   </style>
 </head>
 <body>
@@ -51,10 +51,15 @@
     <div class="toolbar">
       <button class="tool" id="expandAll">모두 펼치기</button>
       <button class="tool" id="collapseAll">2단계만 보기</button>
+      <div class="zoom-controls" role="group" aria-label="가계도 확대 축소">
+        <button class="tool" id="zoomOut" aria-label="축소">−</button>
+        <button class="tool" id="zoomReset" aria-label="원래 크기"><span class="zoom-label" id="zoomLabel">100%</span></button>
+        <button class="tool" id="zoomIn" aria-label="확대">＋</button>
+      </div>
       <input class="search" id="treeSearch" placeholder="메뉴명 또는 함수명 검색">
     </div>
-    <p class="tree-hint"><b>가계도 읽는 법:</b> 위 메뉴에서 아래 메뉴로 선이 이어집니다. 가지가 많은 경우 가로로 스크롤하고, 상자를 눌러 하위 메뉴를 접거나 펼칠 수 있습니다.</p>
-    <div class="tree" id="tree"></div>
+    <p class="tree-hint"><b>가계도 읽는 법:</b> 마우스 휠 또는 모바일 두 손가락으로 확대·축소할 수 있습니다. 가로로 밀어 이동하고, 상자를 눌러 하위 메뉴를 접거나 펼칠 수 있습니다.</p>
+    <div class="tree" id="tree"><div class="tree-canvas" id="treeCanvas"><div class="tree-content" id="treeContent"></div></div></div>
   </section>
 
   <section id="allPane" class="pane">
@@ -198,17 +203,51 @@ function renderTree(data){
   li.dataset.search=(data.title+" "+data.fn+" "+data.meta).toLowerCase();
   const box=document.createElement("div"); box.className="node";
   box.innerHTML='<span class="arrow">'+(has?"▼":"•")+'</span><span class="title">'+data.title+'</span><span class="fn">'+data.fn+'</span>'+(data.meta?'<span class="count">'+data.meta+'</span>':'');
-  if(has) box.onclick=()=>{li.classList.toggle("collapsed");box.querySelector(".arrow").textContent=li.classList.contains("collapsed")?"▶":"▼"};
+  if(has) box.onclick=()=>{li.classList.toggle("collapsed");box.querySelector(".arrow").textContent=li.classList.contains("collapsed")?"▶":"▼";requestAnimationFrame(updateTreeScale)};
   li.appendChild(box);
   if(has){const ul=document.createElement("ul");data.children.forEach(c=>ul.appendChild(renderTree(c)));li.appendChild(ul)}
   return li;
 }
-const root=document.createElement("ul");root.appendChild(renderTree(treeData));document.getElementById("tree").appendChild(root);
+const treeViewport=document.getElementById("tree"),treeCanvas=document.getElementById("treeCanvas"),treeContent=document.getElementById("treeContent");
+const root=document.createElement("ul");root.appendChild(renderTree(treeData));treeContent.appendChild(root);
+let treeScale=1;
+function updateTreeScale(){
+  treeContent.style.transform="none";
+  const baseWidth=treeContent.scrollWidth,baseHeight=treeContent.scrollHeight;
+  const viewportWidth=Math.max(0,treeViewport.clientWidth-48),scaledWidth=baseWidth*treeScale;
+  const canvasWidth=Math.max(viewportWidth,scaledWidth),offsetX=Math.max(0,(canvasWidth-scaledWidth)/2);
+  treeContent.style.transform="translateX("+offsetX+"px) scale("+treeScale+")";
+  treeCanvas.style.width=canvasWidth+"px";
+  treeCanvas.style.height=Math.max(220,baseHeight*treeScale)+"px";
+  document.getElementById("zoomLabel").textContent=Math.round(treeScale*100)+"%";
+}
+function setTreeScale(next,anchorX,anchorY,precision=10){
+  const oldScale=treeScale,rect=treeViewport.getBoundingClientRect();
+  const x=anchorX??rect.left+rect.width/2,y=anchorY??rect.top+rect.height/2;
+  const localX=treeViewport.scrollLeft+x-rect.left,localY=treeViewport.scrollTop+y-rect.top;
+  treeScale=Math.min(2,Math.max(.5,Math.round(next*precision)/precision));
+  updateTreeScale();
+  const ratio=treeScale/oldScale;
+  treeViewport.scrollLeft=localX*ratio-(x-rect.left);
+  treeViewport.scrollTop=localY*ratio-(y-rect.top);
+}
+document.getElementById("zoomOut").onclick=()=>setTreeScale(treeScale-.1);
+document.getElementById("zoomReset").onclick=()=>setTreeScale(1);
+document.getElementById("zoomIn").onclick=()=>setTreeScale(treeScale+.1);
+treeViewport.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)<Math.abs(e.deltaX))return;e.preventDefault();setTreeScale(treeScale+(e.deltaY<0?.1:-.1),e.clientX,e.clientY)},{passive:false});
+let pinchStartDistance=0,pinchStartScale=1;
+const touchDistance=touches=>Math.hypot(touches[0].clientX-touches[1].clientX,touches[0].clientY-touches[1].clientY);
+treeViewport.addEventListener("touchstart",e=>{if(e.touches.length!==2)return;pinchStartDistance=touchDistance(e.touches);pinchStartScale=treeScale;treeContent.classList.add("pinching")},{passive:true});
+treeViewport.addEventListener("touchmove",e=>{if(e.touches.length!==2||!pinchStartDistance)return;e.preventDefault();const x=(e.touches[0].clientX+e.touches[1].clientX)/2,y=(e.touches[0].clientY+e.touches[1].clientY)/2;setTreeScale(pinchStartScale*touchDistance(e.touches)/pinchStartDistance,x,y,100)},{passive:false});
+treeViewport.addEventListener("touchend",e=>{if(e.touches.length<2){pinchStartDistance=0;treeContent.classList.remove("pinching")}},{passive:true});
+treeViewport.addEventListener("touchcancel",()=>{pinchStartDistance=0;treeContent.classList.remove("pinching")},{passive:true});
+window.addEventListener("resize",updateTreeScale);
+requestAnimationFrame(updateTreeScale);
 
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab,.pane").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.pane).classList.add("active")});
-document.getElementById("expandAll").onclick=()=>document.querySelectorAll(".branch").forEach(x=>{x.classList.remove("collapsed");x.querySelector(":scope > .node .arrow").textContent="▼"});
-document.getElementById("collapseAll").onclick=()=>document.querySelectorAll(".branch").forEach((x,i)=>{if(i>0&&x.parentElement.closest("li")!==root.firstElementChild){x.classList.add("collapsed");x.querySelector(":scope > .node .arrow").textContent="▶"}else{x.classList.remove("collapsed")}});
-document.getElementById("treeSearch").oninput=e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll("#tree li").forEach(li=>li.classList.remove("hidden"));if(!q)return;document.querySelectorAll("#tree li").forEach(li=>{if(!li.dataset.search.includes(q)&&![...li.querySelectorAll("li")].some(c=>c.dataset.search.includes(q)))li.classList.add("hidden")});document.querySelectorAll("#tree .branch").forEach(x=>{x.classList.remove("collapsed");x.querySelector(":scope > .node .arrow").textContent="▼"})};
+document.getElementById("expandAll").onclick=()=>{document.querySelectorAll(".branch").forEach(x=>{x.classList.remove("collapsed");x.querySelector(":scope > .node .arrow").textContent="▼"});requestAnimationFrame(updateTreeScale)};
+document.getElementById("collapseAll").onclick=()=>{document.querySelectorAll(".branch").forEach((x,i)=>{if(i>0&&x.parentElement.closest("li")!==root.firstElementChild){x.classList.add("collapsed");x.querySelector(":scope > .node .arrow").textContent="▶"}else{x.classList.remove("collapsed")}});requestAnimationFrame(updateTreeScale)};
+document.getElementById("treeSearch").oninput=e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll("#tree li").forEach(li=>li.classList.remove("hidden"));if(!q){requestAnimationFrame(updateTreeScale);return}document.querySelectorAll("#tree li").forEach(li=>{if(!li.dataset.search.includes(q)&&![...li.querySelectorAll("li")].some(c=>c.dataset.search.includes(q)))li.classList.add("hidden")});document.querySelectorAll("#tree .branch").forEach(x=>{x.classList.remove("collapsed");x.querySelector(":scope > .node .arrow").textContent="▼"});requestAnimationFrame(updateTreeScale)};
 
 const tbody=document.getElementById("menuRows");
 function drawRows(q=""){tbody.innerHTML="";rawMenus.filter(m=>m.join(" ").toLowerCase().includes(q.toLowerCase())).forEach((m,i)=>{const tr=document.createElement("tr");tr.innerHTML='<td>'+(i+1)+'</td><td class="status-'+m[3]+'">'+(m[3]==="reachable"?"메인 연결":"메인 미연결")+'</td><td>'+m[1]+'</td><td><code>'+m[0]+'</code></td><td><code>'+m[2]+'</code></td><td class="muted">'+m[4]+'</td>';tbody.appendChild(tr)})}drawRows();
