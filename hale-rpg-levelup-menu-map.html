@@ -13,12 +13,12 @@
     .finding{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 24px}.note{padding:16px 18px;border-left:4px solid var(--amber);background:#19253a;border-radius:10px;line-height:1.65}.note strong{color:var(--amber)}.note.alert{border-color:var(--red)}.note.alert strong{color:var(--red)}
     .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:10px 15px;border-radius:999px;cursor:pointer}.tab.active{background:var(--blue);border-color:var(--blue);color:#001525;font-weight:800}
     .pane{display:none}.pane.active{display:block}.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.tool{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 12px;border-radius:10px;cursor:pointer}.tool:hover{border-color:var(--blue)}.search{margin-left:auto;min-width:260px;border:1px solid var(--line);background:#091726;color:var(--text);padding:10px 13px;border-radius:10px}.zoom-controls{display:flex;align-items:center;gap:4px;padding:3px;border:1px solid var(--line);border-radius:11px;background:#091726}.zoom-controls .tool{min-width:38px;padding:6px 9px;border:0;background:transparent}.zoom-label{min-width:52px;text-align:center;color:var(--cyan);font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
-    .tree{--generation-gap:256px;padding:34px 24px 54px;border:1px solid var(--line);border-radius:18px;background:rgba(10,23,39,.86);overflow:auto;touch-action:pan-x pan-y;cursor:grab;user-select:none}.tree.dragging,.tree.dragging .node{cursor:grabbing}.tree-canvas{position:relative;min-width:100%;min-height:220px}.tree-content{position:absolute;top:0;left:0;width:max-content;transform-origin:top left;transition:transform .18s ease}.tree-content.pinching{transition:none}.tree ul{display:flex;justify-content:center;list-style:none;margin:0;padding:var(--generation-gap) 0 0;position:relative;min-width:max-content}.tree-content>ul{padding-top:0}.tree li{position:relative;text-align:center;padding:var(--generation-gap) 8px 0}.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:var(--generation-gap);border-top:2px solid var(--line)}.tree li::after{right:auto;left:50%;border-left:2px solid var(--line)}.tree li:only-child::before,.tree li:only-child::after{display:none}.tree li:only-child{padding-top:0}.tree li:first-child::before,.tree li:last-child::after{border:0}.tree li:last-child::before{border-right:2px solid var(--line);border-radius:0 10px 0 0}.tree li:first-child::after{border-radius:10px 0 0 0}.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:var(--generation-gap);border-left:2px solid var(--line)}
-    .node{display:block;position:relative;width:190px;min-height:74px;margin:0 auto;padding:11px 12px;border:1px solid #385878;border-radius:11px;background:linear-gradient(145deg,#132943,#0d1d30);cursor:pointer;box-shadow:0 7px 18px #0005}.node:hover{border-color:var(--blue);transform:translateY(-1px)}.node .arrow{position:absolute;right:7px;top:6px;color:var(--blue);font-size:11px}.node .title{display:block;padding:0 10px;font-weight:750;line-height:1.35}.node .fn{display:block;margin-top:7px;color:var(--muted);font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.node .count{display:block;margin-top:6px;color:var(--cyan);font-size:11px;line-height:1.35}.tree-content>ul>li>.node{width:250px;border-color:var(--blue);background:linear-gradient(145deg,#17476b,#102841)}.tree-content>ul>li>ul>li>.node{border-color:#3f807c}.branch.collapsed>ul{display:none}.branch.collapsed::before,.branch.collapsed::after{border-color:transparent}.leaf .node{cursor:default}.leaf .arrow{visibility:hidden}.tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}.tag.active{background:#123b38;color:var(--green)}.tag.shared{background:#263251;color:#9ebdff}.tag.disabled{background:#452332;color:#ff91a2}
+    .tree{--generation-gap:256px;height:75vh;min-height:520px;max-height:900px;padding:34px 24px 54px;border:1px solid var(--line);border-radius:18px;background:rgba(10,23,39,.86);overflow:auto;overscroll-behavior:contain;touch-action:pan-x pan-y;cursor:grab;user-select:none}.tree.dragging,.tree.dragging .node{cursor:grabbing}.tree-canvas{position:relative;min-width:100%;min-height:220px}.tree-content{position:absolute;top:0;left:0;width:max-content;transform-origin:top left;transition:transform .18s ease}.tree-content.pinching{transition:none}.tree ul{display:flex;justify-content:center;list-style:none;margin:0;padding:var(--generation-gap) 0 0;position:relative;min-width:max-content}.tree-content>ul{padding-top:0}.tree li{position:relative;text-align:center;padding:var(--generation-gap) 8px 0}.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:var(--generation-gap);border-top:2px solid var(--line)}.tree li::after{right:auto;left:50%;border-left:2px solid var(--line)}.tree li:only-child::before,.tree li:only-child::after{display:none}.tree li:only-child{padding-top:0}.tree li:first-child::before,.tree li:last-child::after{border:0}.tree li:last-child::before{border-right:2px solid var(--line);border-radius:0 10px 0 0}.tree li:first-child::after{border-radius:10px 0 0 0}.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:var(--generation-gap);border-left:2px solid var(--line)}
+    .node{display:block;position:relative;width:190px;min-height:74px;margin:0 auto;padding:11px 12px;border:1px solid #385878;border-radius:11px;background:linear-gradient(145deg,#132943,#0d1d30);cursor:pointer;box-shadow:0 7px 18px #0005}.node:hover{border-color:var(--blue);transform:translateY(-1px)}.node .arrow{position:absolute;right:7px;top:6px;color:var(--blue);font-size:11px}.node .title{display:block;padding:0 10px;font-weight:750;line-height:1.35}.node .fn{display:block;margin-top:7px;color:var(--muted);font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.node .count{display:block;margin-top:6px;color:var(--cyan);font-size:11px;line-height:1.35}.tree-content>ul>li>.node{width:250px;border-color:var(--blue);background:linear-gradient(145deg,#17476b,#102841)}.tree-content>ul>li>ul>li>.node{border-color:#3f807c}.choice>.node{border-style:dashed;border-color:var(--amber);background:#28253a}.detail>.node{border-style:dashed;border-color:#52657b;background:#101927}.detail>.node .fn{color:var(--amber)}.branch.collapsed>ul{display:none}.branch.collapsed::before,.branch.collapsed::after{border-color:transparent}.leaf .node{cursor:default}.leaf .arrow{visibility:hidden}.tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}.tag.active{background:#123b38;color:var(--green)}.tag.shared{background:#263251;color:#9ebdff}.tag.disabled{background:#452332;color:#ff91a2}
     .tree-hint{color:var(--muted);font-size:12px;margin:0 0 12px}.tree-hint b{color:var(--cyan)}
     .tablebox{border:1px solid var(--line);border-radius:16px;overflow:auto;background:rgba(10,23,39,.86)}table{border-collapse:collapse;width:100%;min-width:920px}th,td{padding:12px 14px;border-bottom:1px solid #1d334d;text-align:left;vertical-align:top}th{position:sticky;top:0;background:#11243a;color:#bcd0e9;font-size:12px;letter-spacing:.04em}td{font-size:13px}code{color:#9ed9ff;font:12px ui-monospace,SFMono-Regular,Consolas,monospace}.muted{color:var(--muted)}.status-reachable{color:var(--green);font-weight:800}.status-detached{color:var(--red);font-weight:800}
     .detached-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.detached-card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px}.detached-card h3{margin:0 0 8px;font-size:16px}.detached-card p{margin:0;color:var(--muted);line-height:1.55;font-size:13px}.source{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.7}.hidden{display:none!important}
-    @media(max-width:800px){.wrap{padding:14px}.hero{padding:21px}.cards{grid-template-columns:1fr 1fr}.finding,.detached-grid{grid-template-columns:1fr}.search{margin-left:0;width:100%}.zoom-controls{order:3}.tree{padding-left:14px;padding-right:14px}.node{width:168px}.tree-content>ul>li>.node{width:220px}}
+    @media(max-width:800px){.wrap{padding:14px}.hero{padding:21px}.cards{grid-template-columns:1fr 1fr}.finding,.detached-grid{grid-template-columns:1fr}.search{margin-left:0;width:100%}.zoom-controls{order:3}.tree{height:68vh;min-height:420px;padding-left:14px;padding-right:14px}.node{width:168px}.tree-content>ul>li>.node{width:220px}}
   </style>
 </head>
 <body>
@@ -58,7 +58,7 @@
       </div>
       <input class="search" id="treeSearch" placeholder="메뉴명 또는 함수명 검색">
     </div>
-    <p class="tree-hint"><b>가계도 읽는 법:</b> 마우스 휠 또는 모바일 두 손가락으로 확대·축소할 수 있습니다. 마우스로 빈 공간이나 노드를 잡아 끌어 이동하고, 클릭하면 하위 메뉴를 접거나 펼칠 수 있습니다.</p>
+    <p class="tree-hint"><b>가계도 읽는 법:</b> 아래 가계도 상자 안에서만 마우스 휠 또는 모바일 두 손가락으로 확대·축소됩니다. 마우스로 잡아 끌어 독립 스크롤을 이동하고, 클릭하면 하위 메뉴를 접거나 펼칠 수 있습니다. 점선 상자는 클래스 선택이나 화면 안에서 실행되는 기능입니다.</p>
     <div class="tree" id="tree"><div class="tree-canvas" id="treeCanvas"><div class="tree-content" id="treeContent"></div></div></div>
   </section>
 
@@ -81,49 +81,73 @@
 
 <script>
 const n=(title,fn,children=[],meta="")=>({title,fn,children,meta});
+const choice=(title,children=[],meta="")=>n(title,"선택 항목",children,meta);
+const detail=(title,meta="")=>n(title,"화면 내 기능",[],meta);
+const classes=["스카웃","솔저","파이로","데모맨","헤비","엔지니어","메딕","스나이퍼","스파이"];
 const treeData=n("메인 메뉴","Menu_ShowMain",[
-  n("내정보","Menu_ShowPlayerInfo",[],"플레이어 정보 표시"),
+  n("내정보","Menu_ShowPlayerInfo",[
+    detail("레벨·경험치·포인트 등 표시","플레이어 성장 정보")
+  ],"플레이어 정보 표시"),
   n("스킬메뉴","Menu_ShowSkill",[
     n("스킬 습득하기","ScoutSkills_ShowClassMenu",[
-      n("스카웃","ScoutSkills_ShowScoutMenu",[],"실제 스킬 습득"),
-      n("솔저·파이로·데모맨·헤비·엔지니어·메딕·스나이퍼·스파이","ScoutSkills_ShowComingSoonMenu",[],"8개 클래스가 같은 준비 중 화면 공유")
+      choice("스카웃",[
+        n("스카웃 스킬 습득","ScoutSkills_ShowScoutMenu",[
+          detail("스킬 목록에서 선택·습득","동적 스킬 목록")
+        ],"실제 스킬 습득")
+      ]),
+      ...classes.slice(1).map(name=>choice(name,[
+        n(name+" 스킬 준비 중","ScoutSkills_ShowComingSoonMenu",[
+          detail("준비 중 안내 표시","8개 클래스가 같은 화면 공유")
+        ])
+      ]))
     ]),
     n("클래스 스탯 올리기","Menu_ShowClassStat",[
-      n("클래스/공용 스탯 상세","Menu_ShowClassStatDetail",[],"스카웃~스파이 9개 + 공용 1개 · 헤일은 사용불가")
-    ])
+      ...[...classes,"공용"].map(name=>choice(name,[
+        n(name+" 스탯 상세","Menu_ShowClassStatDetail",[
+          detail("스탯 항목 선택·포인트 투자","동적 스탯 업그레이드")
+        ])
+      ])),
+      choice("헤일",[detail("사용 불가 안내")],"비활성")
+    ],"9개 클래스 + 공용 · 헤일 사용불가")
   ]),
   n("상점","Menu_ShowShop",[
-    n("무기 목록","Menu_ShowShopWeaponList",[n("무기 상세/구매","Menu_ShowShopWeaponDetail")]),
+    n("무기 목록","Menu_ShowShopWeaponList",[n("무기 상세/구매","Menu_ShowShopWeaponDetail",[detail("가격 확인·구매 처리")])]),
     n("장비 목록","Menu_ShowShopEquipList",[
-      n("장비 상세/구매","Menu_ShowShopEquipDetail"),
-      n("펫 구매","Menu_ShowShopPet")
+      n("장비 상세/구매","Menu_ShowShopEquipDetail",[detail("가격 확인·구매 처리")]),
+      n("펫 구매","Menu_ShowShopPet",[detail("펫 가격 확인·구매 처리")])
     ]),
-    n("소모품 목록","Menu_ShowShopConsumableList",[n("소모품 상세/구매","Menu_ShowShopConsumableDetail")])
+    n("소모품 목록","Menu_ShowShopConsumableList",[n("소모품 상세/구매","Menu_ShowShopConsumableDetail",[detail("수량·가격 확인 후 구매")])])
   ]),
   n("인벤토리","Menu_ShowInventory",[
-    n("무기 목록","Menu_ShowInvWeaponList",[n("무기 상세/판매","Menu_ShowInvWeaponDetail")]),
+    n("무기 목록","Menu_ShowInvWeaponList",[n("무기 상세/판매","Menu_ShowInvWeaponDetail",[detail("무기 정보 확인·판매 처리")])]),
     n("장비 목록","Menu_ShowInvEquipList",[
-      n("장비 상세/장착·판매","Menu_ShowInvEquipDetail"),
-      n("펫 상세/장착·판매","Menu_ShowInvPetDetail")
+      n("장비 상세/장착·판매","Menu_ShowInvEquipDetail",[detail("장착·해제·판매 처리")]),
+      n("펫 상세/장착·판매","Menu_ShowInvPetDetail",[detail("펫 장착·해제·판매 처리")])
     ]),
-    n("소모품 목록","Menu_ShowInvConsumableList",[n("소모품 상세/사용","Menu_ShowInvConsumableDetail")]),
-    n("기타&잡템 목록","Menu_ShowInvMiscList",[n("기타 아이템 상세","Menu_ShowInvMiscDetail")])
+    n("소모품 목록","Menu_ShowInvConsumableList",[n("소모품 상세/사용","Menu_ShowInvConsumableDetail",[detail("수량 확인·사용 처리")])]),
+    n("기타&잡템 목록","Menu_ShowInvMiscList",[n("기타 아이템 상세","Menu_ShowInvMiscDetail",[detail("아이템 정보 표시")])])
   ]),
   n("장비","Menu_ShowEquipment",[
-    n("장비 슬롯 상세","Menu_ShowEquipSlotDetail",[],"일반 장비 장착/해제"),
+    n("장비 슬롯 상세","Menu_ShowEquipSlotDetail",[detail("일반 장비 장착·해제")]),
     n("무기 장착 - 클래스 선택","Menu_ShowEquipWeaponSelect",[
-      n("무기 슬롯 아이템","Menu_ShowWeaponSlotItems")
+      ...classes.map(name=>choice(name,[
+        n(name+" 무기 슬롯 아이템","Menu_ShowWeaponSlotItems",[
+          detail("보유 무기 장착·해제","클래스별 동적 목록")
+        ])
+      ]))
     ]),
     n("다음 → 특수 장비","Menu_ShowEquipment2",[
-      n("펫 장착 상세","Menu_ShowEquipPetDetail")
+      choice("칭호",[detail("칭호 슬롯 항목")]),
+      choice("스킨",[detail("스킨 슬롯 항목")]),
+      n("펫 장착 상세","Menu_ShowEquipPetDetail",[detail("펫 장착·해제")])
     ])
   ]),
   n("퀘스트","Quest_ShowMainMenu",[
-    n("일일 미션 제안","Quest_ShowOfferMenu"),
-    n("진행중 목록","Quest_ShowActiveList",[n("진행중 상세/포기","Quest_ShowActiveDetail")]),
-    n("완료·실패 목록","Quest_ShowHistoryList",[n("기록 상세","Quest_ShowHistoryDetail")])
+    n("일일 미션 제안","Quest_ShowOfferMenu",[detail("미션 내용 확인·수락")]),
+    n("진행중 목록","Quest_ShowActiveList",[n("진행중 상세/포기","Quest_ShowActiveDetail",[detail("진행도 확인·포기 처리")])]),
+    n("완료·실패 목록","Quest_ShowHistoryList",[n("기록 상세","Quest_ShowHistoryDetail",[detail("완료·실패 기록 정보")])])
   ]),
-  n("부활메뉴","Menu_ShowRevive")
+  n("부활메뉴","Menu_ShowRevive",[detail("포인트 차감·부활 처리")])
 ]);
 
 const rawMenus=[
@@ -200,7 +224,7 @@ const detachedInfo={
 let treeDragMoved=false;
 function renderTree(data){
   const li=document.createElement("li"), has=data.children.length>0;
-  li.className=has?"branch":"leaf";
+  li.className=(has?"branch":"leaf")+(data.fn==="선택 항목"?" choice":"")+(data.fn==="화면 내 기능"?" detail":"");
   li.dataset.search=(data.title+" "+data.fn+" "+data.meta).toLowerCase();
   const box=document.createElement("div"); box.className="node";
   box.innerHTML='<span class="arrow">'+(has?"▼":"•")+'</span><span class="title">'+data.title+'</span><span class="fn">'+data.fn+'</span>'+(data.meta?'<span class="count">'+data.meta+'</span>':'');
