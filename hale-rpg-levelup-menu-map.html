@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>헤일 RPG 레벨업 메뉴 연결도</title>
+  <style>
+    :root{--bg:#07111f;--panel:#0e1d30;--panel2:#13263d;--line:#29425f;--text:#eaf2ff;--muted:#93a9c3;--blue:#4eb7ff;--cyan:#43e4d5;--amber:#ffc857;--red:#ff7185;--green:#63e6a5}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 80% -10%,#173c62 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,Pretendard,"Noto Sans KR",system-ui,sans-serif}
+    button,input{font:inherit}.wrap{max-width:1440px;margin:auto;padding:28px}.hero{padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(19,38,61,.96),rgba(7,17,31,.96));box-shadow:0 25px 70px #0008}
+    .eyebrow{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.hero h1{margin:8px 0 10px;font-size:clamp(28px,4vw,48px);line-height:1.15}.hero p{margin:0;color:var(--muted);max-width:900px;line-height:1.7}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}.card{padding:18px;border:1px solid var(--line);border-radius:16px;background:rgba(14,29,48,.88)}.num{font-size:32px;font-weight:900;color:var(--blue)}.label{color:var(--muted);font-size:13px;margin-top:4px}
+    .finding{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 24px}.note{padding:16px 18px;border-left:4px solid var(--amber);background:#19253a;border-radius:10px;line-height:1.65}.note strong{color:var(--amber)}.note.alert{border-color:var(--red)}.note.alert strong{color:var(--red)}
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:10px 15px;border-radius:999px;cursor:pointer}.tab.active{background:var(--blue);border-color:var(--blue);color:#001525;font-weight:800}
+    .pane{display:none}.pane.active{display:block}.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:14px}.tool{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:9px 12px;border-radius:10px;cursor:pointer}.search{margin-left:auto;min-width:260px;border:1px solid var(--line);background:#091726;color:var(--text);padding:10px 13px;border-radius:10px}
+    .tree{padding:34px 24px 54px;border:1px solid var(--line);border-radius:18px;background:rgba(10,23,39,.86);overflow:auto}.tree ul{display:flex;justify-content:center;list-style:none;margin:0;padding:32px 0 0;position:relative;min-width:max-content}.tree>ul{padding-top:0}.tree li{position:relative;text-align:center;padding:32px 8px 0}.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:32px;border-top:2px solid var(--line)}.tree li::after{right:auto;left:50%;border-left:2px solid var(--line)}.tree li:only-child::before,.tree li:only-child::after{display:none}.tree li:only-child{padding-top:0}.tree li:first-child::before,.tree li:last-child::after{border:0}.tree li:last-child::before{border-right:2px solid var(--line);border-radius:0 10px 0 0}.tree li:first-child::after{border-radius:10px 0 0 0}.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:32px;border-left:2px solid var(--line)}
+    .node{display:block;position:relative;width:190px;min-height:74px;margin:0 auto;padding:11px 12px;border:1px solid #385878;border-radius:11px;background:linear-gradient(145deg,#132943,#0d1d30);cursor:pointer;box-shadow:0 7px 18px #0005}.node:hover{border-color:var(--blue);transform:translateY(-1px)}.node .arrow{position:absolute;right:7px;top:6px;color:var(--blue);font-size:11px}.node .title{display:block;padding:0 10px;font-weight:750;line-height:1.35}.node .fn{display:block;margin-top:7px;color:var(--muted);font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.node .count{display:block;margin-top:6px;color:var(--cyan);font-size:11px;line-height:1.35}.tree>ul>li>.node{width:250px;border-color:var(--blue);background:linear-gradient(145deg,#17476b,#102841)}.tree>ul>li>ul>li>.node{border-color:#3f807c}.branch.collapsed>ul{display:none}.branch.collapsed::before,.branch.collapsed::after{border-color:transparent}.leaf .node{cursor:default}.leaf .arrow{visibility:hidden}.tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}.tag.active{background:#123b38;color:var(--green)}.tag.shared{background:#263251;color:#9ebdff}.tag.disabled{background:#452332;color:#ff91a2}
+    .tree-hint{color:var(--muted);font-size:12px;margin:0 0 12px}.tree-hint b{color:var(--cyan)}
+    .tablebox{border:1px solid var(--line);border-radius:16px;overflow:auto;background:rgba(10,23,39,.86)}table{border-collapse:collapse;width:100%;min-width:920px}th,td{padding:12px 14px;border-bottom:1px solid #1d334d;text-align:left;vertical-align:top}th{position:sticky;top:0;background:#11243a;color:#bcd0e9;font-size:12px;letter-spacing:.04em}td{font-size:13px}code{color:#9ed9ff;font:12px ui-monospace,SFMono-Regular,Consolas,monospace}.muted{color:var(--muted)}.status-reachable{color:var(--green);font-weight:800}.status-detached{color:var(--red);font-weight:800}
+    .detached-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.detached-card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px}.detached-card h3{margin:0 0 8px;font-size:16px}.detached-card p{margin:0;color:var(--muted);line-height:1.55;font-size:13px}.source{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.7}.hidden{display:none!important}
+    @media(max-width:800px){.wrap{padding:14px}.hero{padding:21px}.cards{grid-template-columns:1fr 1fr}.finding,.detached-grid{grid-template-columns:1fr}.search{margin-left:0;width:100%}.tree{padding-left:14px;padding-right:14px}.node{width:168px}.tree>ul>li>.node{width:220px}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">305like / FF2_RPG_SKILL · main</div>
+    <h1>헤일 RPG 레벨업 메뉴 연결도</h1>
+    <p>실제 SourcePawn 메뉴 생성 함수와 선택 핸들러를 기준으로, 상위 메뉴에서 어떤 하위 메뉴로 이동하는지 정리했습니다. 동적 아이템 목록은 데이터 개수와 관계없이 “화면 생성 함수 1개”로 계산했습니다.</p>
+  </section>
+
+  <section class="cards">
+    <div class="card"><div class="num">7</div><div class="label">메인 메뉴의 활성 선택지</div></div>
+    <div class="card"><div class="num">39</div><div class="label">메인에서 실제 도달 가능한 메뉴 화면</div></div>
+    <div class="card"><div class="num">52</div><div class="label">레벨업 코드에 정의된 전체 메뉴 화면</div></div>
+    <div class="card"><div class="num">13</div><div class="label">메인에서 연결되지 않은 메뉴 화면</div></div>
+  </section>
+
+  <section class="finding">
+    <div class="note"><strong>현재 활성 스킬 경로</strong><br>메인 → 스킬메뉴 → 스킬 습득하기는 <code>ScoutSkills_ShowClassMenu</code>로 연결됩니다. 현재 스카웃만 실제 습득 메뉴로 가고, 나머지 8개 클래스는 같은 “준비 중” 화면으로 갑니다.</div>
+    <div class="note alert"><strong>중요: 새 스킬 메뉴 6개가 미연결</strong><br><code>SkillMenu_ShowMain</code>에서 시작하는 계열별 47개 스킬·장착 슬롯 메뉴는 정의되어 있지만, 현재 메인 스킬 버튼과 연결되어 있지 않습니다. 무기강화도 메인 버튼이 주석 처리되어 있습니다.</div>
+  </section>
+
+  <nav class="tabs" aria-label="보기 선택">
+    <button class="tab active" data-pane="treePane">메인 연결도</button>
+    <button class="tab" data-pane="allPane">전체 메뉴 52개</button>
+    <button class="tab" data-pane="detachedPane">미연결 메뉴 13개</button>
+  </nav>
+
+  <section id="treePane" class="pane active">
+    <div class="toolbar">
+      <button class="tool" id="expandAll">모두 펼치기</button>
+      <button class="tool" id="collapseAll">2단계만 보기</button>
+      <input class="search" id="treeSearch" placeholder="메뉴명 또는 함수명 검색">
+    </div>
+    <p class="tree-hint"><b>가계도 읽는 법:</b> 위 메뉴에서 아래 메뉴로 선이 이어집니다. 가지가 많은 경우 가로로 스크롤하고, 상자를 눌러 하위 메뉴를 접거나 펼칠 수 있습니다.</p>
+    <div class="tree" id="tree"></div>
+  </section>
+
+  <section id="allPane" class="pane">
+    <div class="toolbar"><input class="search" id="tableSearch" placeholder="52개 메뉴에서 검색"></div>
+    <div class="tablebox">
+      <table>
+        <thead><tr><th>#</th><th>상태</th><th>화면 제목</th><th>생성 함수</th><th>소스 파일</th><th>설명</th></tr></thead>
+        <tbody id="menuRows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="detachedPane" class="pane">
+    <div class="detached-grid" id="detachedCards"></div>
+  </section>
+
+  <p class="source">분석 기준: 저장소 <code>305like/FF2_RPG_SKILL</code>, 기본 브랜치 <code>main</code>, 트리 커밋 <code>2db7b76bc424ed967f078416ead6b099e71e2ed6</code>. 주요 분석 파일: <code>include/levelup/menu_system.inc</code>, <code>skill_menu.inc</code>, <code>scout_skill_system.inc</code>, <code>quest_system.inc</code>, <code>levelup_v2.sp</code>. 명령 진입점은 <code>sm_st</code>/<code>sm_level</code>, 퀵슬롯은 <code>alt2</code>, 스탯 검사는 <code>sm_스탯검사</code>/<code>sm_statcheck</code>입니다.</p>
+</main>
+
+<script>
+const n=(title,fn,children=[],meta="")=>({title,fn,children,meta});
+const treeData=n("메인 메뉴","Menu_ShowMain",[
+  n("내정보","Menu_ShowPlayerInfo",[],"플레이어 정보 표시"),
+  n("스킬메뉴","Menu_ShowSkill",[
+    n("스킬 습득하기","ScoutSkills_ShowClassMenu",[
+      n("스카웃","ScoutSkills_ShowScoutMenu",[],"실제 스킬 습득"),
+      n("솔저·파이로·데모맨·헤비·엔지니어·메딕·스나이퍼·스파이","ScoutSkills_ShowComingSoonMenu",[],"8개 클래스가 같은 준비 중 화면 공유")
+    ]),
+    n("클래스 스탯 올리기","Menu_ShowClassStat",[
+      n("클래스/공용 스탯 상세","Menu_ShowClassStatDetail",[],"스카웃~스파이 9개 + 공용 1개 · 헤일은 사용불가")
+    ])
+  ]),
+  n("상점","Menu_ShowShop",[
+    n("무기 목록","Menu_ShowShopWeaponList",[n("무기 상세/구매","Menu_ShowShopWeaponDetail")]),
+    n("장비 목록","Menu_ShowShopEquipList",[
+      n("장비 상세/구매","Menu_ShowShopEquipDetail"),
+      n("펫 구매","Menu_ShowShopPet")
+    ]),
+    n("소모품 목록","Menu_ShowShopConsumableList",[n("소모품 상세/구매","Menu_ShowShopConsumableDetail")])
+  ]),
+  n("인벤토리","Menu_ShowInventory",[
+    n("무기 목록","Menu_ShowInvWeaponList",[n("무기 상세/판매","Menu_ShowInvWeaponDetail")]),
+    n("장비 목록","Menu_ShowInvEquipList",[
+      n("장비 상세/장착·판매","Menu_ShowInvEquipDetail"),
+      n("펫 상세/장착·판매","Menu_ShowInvPetDetail")
+    ]),
+    n("소모품 목록","Menu_ShowInvConsumableList",[n("소모품 상세/사용","Menu_ShowInvConsumableDetail")]),
+    n("기타&잡템 목록","Menu_ShowInvMiscList",[n("기타 아이템 상세","Menu_ShowInvMiscDetail")])
+  ]),
+  n("장비","Menu_ShowEquipment",[
+    n("장비 슬롯 상세","Menu_ShowEquipSlotDetail",[],"일반 장비 장착/해제"),
+    n("무기 장착 - 클래스 선택","Menu_ShowEquipWeaponSelect",[
+      n("무기 슬롯 아이템","Menu_ShowWeaponSlotItems")
+    ]),
+    n("다음 → 특수 장비","Menu_ShowEquipment2",[
+      n("펫 장착 상세","Menu_ShowEquipPetDetail")
+    ])
+  ]),
+  n("퀘스트","Quest_ShowMainMenu",[
+    n("일일 미션 제안","Quest_ShowOfferMenu"),
+    n("진행중 목록","Quest_ShowActiveList",[n("진행중 상세/포기","Quest_ShowActiveDetail")]),
+    n("완료·실패 목록","Quest_ShowHistoryList",[n("기록 상세","Quest_ShowHistoryDetail")])
+  ]),
+  n("부활메뉴","Menu_ShowRevive")
+]);
+
+const rawMenus=[
+["Attribute_ShowStatCheckMessage","스탯 검사","attribute_system.inc","detached","별도 스탯 검사 결과 화면"],
+["Command_CheckAcquiredStats","스탯 검사 · 습득값/적용값","attribute_system.inc","detached","sm_스탯검사·sm_statcheck 진입"],
+["Menu_ShowMain","RPG&스킬 헤일 서버 메인","menu_system.inc","reachable","7개 활성 선택지"],
+["Menu_ShowSkill","스킬 메뉴","menu_system.inc","reachable","습득·클래스 스탯"],
+["Menu_ShowInventory","인벤토리","menu_system.inc","reachable","4개 카테고리"],
+["Menu_ShowInvWeaponList","인벤토리 - 무기","menu_system.inc","reachable","동적 무기 목록"],
+["Menu_ShowInvWeaponDetail","인벤토리 무기 상세","menu_system.inc","reachable","판매"],
+["Menu_ShowInvEquipList","인벤토리 - 장비","menu_system.inc","reachable","동적 장비 목록·펫"],
+["Menu_ShowInvEquipSlot","인벤토리 장비 슬롯","menu_system.inc","detached","현재 호출되지 않는 구형 슬롯 화면"],
+["Menu_ShowInvPetDetail","인벤토리 펫 상세","menu_system.inc","reachable","장착·해제·판매"],
+["Menu_ShowInvEquipDetail","인벤토리 장비 상세","menu_system.inc","reachable","장착·해제·판매"],
+["Menu_ShowInvConsumableList","인벤토리 - 소모품","menu_system.inc","reachable","동적 목록"],
+["Menu_ShowInvConsumableDetail","소모품 상세","menu_system.inc","reachable","사용"],
+["Menu_ShowInvMiscList","인벤토리 - 기타&잡템","menu_system.inc","reachable","동적 목록"],
+["Menu_ShowInvMiscDetail","기타 아이템 상세","menu_system.inc","reachable","정보 표시"],
+["Menu_ShowEquipment","장비","menu_system.inc","reachable","일반 장비·무기·다음 페이지"],
+["Menu_ShowEquipSlotDetail","장비 슬롯 상세","menu_system.inc","reachable","장착·해제"],
+["Menu_ShowEquipWeaponSelect","무기 장착 - 클래스 선택","menu_system.inc","reachable","클래스별 무기"],
+["Menu_ShowWeaponSlotSelect","무기 슬롯 선택","menu_system.inc","detached","현재 클래스 선택에서 직접 아이템 화면으로 이동"],
+["Menu_ShowWeaponSlotItems","무기 슬롯 아이템","menu_system.inc","reachable","장착·해제"],
+["Menu_ShowEquipment2","특수 장비 메뉴","menu_system.inc","reachable","칭호·스킨·펫"],
+["Menu_ShowEquipPetDetail","펫 장착 상세","menu_system.inc","reachable","장착·해제"],
+["Menu_ShowPlayerInfo","내정보","menu_system.inc","reachable","레벨·경험치·포인트 등"],
+["Menu_ShowClassStat","클래스 스탯","menu_system.inc","reachable","9클래스·헤일 비활성·공용"],
+["Menu_ShowClassStatDetail","클래스 스탯 상세","menu_system.inc","reachable","동적 스탯 업그레이드"],
+["Menu_ShowRevive","부활 메뉴","menu_system.inc","reachable","포인트 소모 부활"],
+["Menu_ShowWeaponUpgrade","무기강화","menu_system.inc","detached","메인 AddItem이 주석 처리됨"],
+["Menu_ShowQuickSlot","소모품 퀵슬롯","menu_system.inc","detached","메인 외 alt2 명령으로 진입"],
+["Menu_ShowShop","상점","menu_system.inc","reachable","무기·장비·소모품"],
+["Menu_ShowShopWeaponList","상점 무기 목록","menu_system.inc","reachable","동적 상품"],
+["Menu_ShowShopWeaponDetail","상점 무기 상세","menu_system.inc","reachable","구매"],
+["Menu_ShowShopEquipList","상점 장비 목록","menu_system.inc","reachable","장비·펫"],
+["Menu_ShowShopEquipSlot","상점 장비 슬롯","menu_system.inc","detached","현재 호출되지 않는 구형 슬롯 화면"],
+["Menu_ShowShopEquipDetail","상점 장비 상세","menu_system.inc","reachable","구매"],
+["Menu_ShowShopConsumableList","상점 소모품 목록","menu_system.inc","reachable","동적 상품"],
+["Menu_ShowShopConsumableDetail","상점 소모품 상세","menu_system.inc","reachable","구매"],
+["Menu_ShowShopPet","상점 펫","menu_system.inc","reachable","펫 구매"],
+["Quest_ShowMainMenu","퀘스트","quest_system.inc","reachable","메인·일일·진행·기록"],
+["Quest_ShowOfferMenu","일일 미션 제안","quest_system.inc","reachable","수락"],
+["Quest_ShowActiveList","진행중인 퀘스트","quest_system.inc","reachable","진행 목록"],
+["Quest_ShowActiveDetail","진행중 퀘스트 상세","quest_system.inc","reachable","포기"],
+["Quest_ShowHistoryList","완료·실패 퀘스트","quest_system.inc","reachable","기록 목록"],
+["Quest_ShowHistoryDetail","퀘스트 기록 상세","quest_system.inc","reachable","정보 표시"],
+["ScoutSkills_ShowClassMenu","스킬 습득하기","scout_skill_system.inc","reachable","클래스 선택"],
+["ScoutSkills_ShowComingSoonMenu","클래스 스킬 준비 중","scout_skill_system.inc","reachable","스카웃 외 8개 클래스 공유"],
+["ScoutSkills_ShowScoutMenu","스카웃 스킬 습득","scout_skill_system.inc","reachable","동적 스킬 목록"],
+["SkillMenu_ShowMain","신규 스킬 메뉴","skill_menu.inc","detached","현재 메인 스킬 버튼과 미연결"],
+["SkillMenu_ShowLearnCategory","신규 스킬 계열 선택","skill_menu.inc","detached","근접14·원거리14·마법14·기타5"],
+["SkillMenu_ShowLearnList","신규 스킬 목록","skill_menu.inc","detached","페이지형 목록"],
+["SkillMenu_ShowLearnDetail","신규 스킬 상세","skill_menu.inc","detached","습득 확인"],
+["SkillMenu_ShowEquipSlot","신규 스킬 장착 슬롯","skill_menu.inc","detached","키 슬롯 선택"],
+["SkillMenu_ShowSkillSelect","신규 장착 스킬 선택","skill_menu.inc","detached","장착·해제"]
+];
+
+const detachedInfo={
+  Attribute_ShowStatCheckMessage:"메인 계층 밖의 검사 결과 화면입니다.",
+  Command_CheckAcquiredStats:"sm_스탯검사 또는 sm_statcheck로 직접 열립니다.",
+  Menu_ShowInvEquipSlot:"함수는 남아 있지만 현재 인벤토리 장비 목록이 상세 화면으로 직접 이동합니다.",
+  Menu_ShowWeaponSlotSelect:"함수는 남아 있지만 현재 무기 클래스 선택 뒤 아이템 화면으로 직접 이동합니다.",
+  Menu_ShowWeaponUpgrade:"메인 핸들러 분기는 남아 있으나 AddItem 코드가 주석 처리되어 실제 선택할 수 없습니다.",
+  Menu_ShowQuickSlot:"메인과 무관하게 alt2 명령으로 열리는 별도 메뉴입니다.",
+  Menu_ShowShopEquipSlot:"함수는 남아 있지만 현재 상점 장비 목록이 상세 화면으로 직접 이동합니다.",
+  SkillMenu_ShowMain:"새 범용 스킬 메뉴의 시작점이지만 Menu_ShowSkill에서 호출하지 않습니다.",
+  SkillMenu_ShowLearnCategory:"근접 14·원거리 14·마법 14·기타 5, 총 47개 계열 선택 화면입니다.",
+  SkillMenu_ShowLearnList:"47개 스킬을 계열별로 보여주는 목록 화면입니다.",
+  SkillMenu_ShowLearnDetail:"새 스킬의 상세·습득 확인 화면입니다.",
+  SkillMenu_ShowEquipSlot:"스킬 장착 키 슬롯 선택 화면입니다.",
+  SkillMenu_ShowSkillSelect:"배운 스킬을 슬롯에 장착하는 화면입니다."
+};
+
+function renderTree(data){
+  const li=document.createElement("li"), has=data.children.length>0;
+  li.className=has?"branch":"leaf";
+  li.dataset.search=(data.title+" "+data.fn+" "+data.meta).toLowerCase();
+  const box=document.createElement("div"); box.className="node";
+  box.innerHTML='<span class="arrow">'+(has?"▼":"•")+'</span><span class="title">'+data.title+'</span><span class="fn">'+data.fn+'</span>'+(data.meta?'<span class="count">'+data.meta+'</span>':'');
+  if(has) box.onclick=()=>{li.classList.toggle("collapsed");box.querySelector(".arrow").textContent=li.classList.contains("collapsed")?"▶":"▼"};
+  li.appendChild(box);
+  if(has){const ul=document.createElement("ul");data.children.forEach(c=>ul.appendChild(renderTree(c)));li.appendChild(ul)}
+  return li;
+}
+const root=document.createElement("ul");root.appendChild(renderTree(treeData));document.getElementById("tree").appendChild(root);
+
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab,.pane").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.getElementById(b.dataset.pane).classList.add("active")});
+document.getElementById("expandAll").onclick=()=>document.querySelectorAll(".branch").forEach(x=>{x.classList.remove("collapsed");x.querySelector(":scope > .node .arrow").textContent="▼"});
+document.getElementById("collapseAll").onclick=()=>document.querySelectorAll(".branch").forEach((x,i)=>{if(i>0&&x.parentElement.closest("li")!==root.firstElementChild){x.classList.add("collapsed");x.querySelector(":scope > .node .arrow").textContent="▶"}else{x.classList.remove("collapsed")}});
+document.getElementById("treeSearch").oninput=e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll("#tree li").forEach(li=>li.classList.remove("hidden"));if(!q)return;document.querySelectorAll("#tree li").forEach(li=>{if(!li.dataset.search.includes(q)&&![...li.querySelectorAll("li")].some(c=>c.dataset.search.includes(q)))li.classList.add("hidden")});document.querySelectorAll("#tree .branch").forEach(x=>{x.classList.remove("collapsed");x.querySelector(":scope > .node .arrow").textContent="▼"})};
+
+const tbody=document.getElementById("menuRows");
+function drawRows(q=""){tbody.innerHTML="";rawMenus.filter(m=>m.join(" ").toLowerCase().includes(q.toLowerCase())).forEach((m,i)=>{const tr=document.createElement("tr");tr.innerHTML='<td>'+(i+1)+'</td><td class="status-'+m[3]+'">'+(m[3]==="reachable"?"메인 연결":"메인 미연결")+'</td><td>'+m[1]+'</td><td><code>'+m[0]+'</code></td><td><code>'+m[2]+'</code></td><td class="muted">'+m[4]+'</td>';tbody.appendChild(tr)})}drawRows();
+document.getElementById("tableSearch").oninput=e=>drawRows(e.target.value);
+
+const cards=document.getElementById("detachedCards");
+rawMenus.filter(m=>m[3]==="detached").forEach(m=>{const d=document.createElement("article");d.className="detached-card";d.innerHTML='<span class="tag disabled">메인 미연결</span><h3>'+m[1]+'</h3><p><code>'+m[0]+'</code><br>'+detachedInfo[m[0]]+'</p>';cards.appendChild(d)});
+</script>
+</body>
+</html>
