@@ -17,8 +17,10 @@
     .node{display:block;position:relative;width:190px;min-height:74px;margin:0 auto;padding:11px 12px;border:1px solid #385878;border-radius:11px;background:linear-gradient(145deg,#132943,#0d1d30);cursor:pointer;box-shadow:0 7px 18px #0005}.node:hover{border-color:var(--blue);transform:translateY(-1px)}.node .arrow{position:absolute;right:7px;top:6px;color:var(--blue);font-size:11px}.node .title{display:block;padding:0 10px;font-weight:750;line-height:1.35}.node .fn{display:block;margin-top:7px;color:var(--muted);font:11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}.node .count{display:block;margin-top:6px;color:var(--cyan);font-size:11px;line-height:1.35}.tree-content>ul>li>.node{width:250px;border-color:var(--blue);background:linear-gradient(145deg,#17476b,#102841)}.tree-content>ul>li>ul>li>.node{border-color:#3f807c}.choice>.node{border-style:dashed;border-color:var(--amber);background:#28253a}.detail>.node{border-style:dashed;border-color:#52657b;background:#101927}.detail>.node .fn{color:var(--amber)}.branch.collapsed>ul{display:none}.branch.collapsed::before,.branch.collapsed::after{border-color:transparent}.leaf .node{cursor:default}.leaf .arrow{visibility:hidden}.tag{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}.tag.active{background:#123b38;color:var(--green)}.tag.shared{background:#263251;color:#9ebdff}.tag.disabled{background:#452332;color:#ff91a2}
     .tree-hint{color:var(--muted);font-size:12px;margin:0 0 12px}.tree-hint b{color:var(--cyan)}
     .tablebox{border:1px solid var(--line);border-radius:16px;overflow:auto;background:rgba(10,23,39,.86)}table{border-collapse:collapse;width:100%;min-width:920px}th,td{padding:12px 14px;border-bottom:1px solid #1d334d;text-align:left;vertical-align:top}th{position:sticky;top:0;background:#11243a;color:#bcd0e9;font-size:12px;letter-spacing:.04em}td{font-size:13px}code{color:#9ed9ff;font:12px ui-monospace,SFMono-Regular,Consolas,monospace}.muted{color:var(--muted)}.status-reachable{color:var(--green);font-weight:800}.status-detached{color:var(--red);font-weight:800}
-    .detached-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.detached-card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px}.detached-card h3{margin:0 0 8px;font-size:16px}.detached-card p{margin:0;color:var(--muted);line-height:1.55;font-size:13px}.source{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.7}.hidden{display:none!important}
-    @media(max-width:800px){.wrap{padding:14px}.hero{padding:21px}.cards{grid-template-columns:1fr 1fr}.finding,.detached-grid{grid-template-columns:1fr}.search{margin-left:0;width:100%}.zoom-controls{order:3}.tree{height:68vh;min-height:420px;padding-left:14px;padding-right:14px}.node{width:168px}.tree-content>ul>li>.node{width:220px}}
+    .detached-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.detached-card{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px}.detached-card h3{margin:0 0 8px;font-size:16px}.detached-card p{margin:0;color:var(--muted);line-height:1.55;font-size:13px}
+    .stat-summary{color:var(--muted);font-size:13px}.stat-summary b{color:var(--cyan)}.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.stat-card{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:rgba(10,23,39,.9)}.stat-card.disabled{border-color:#63384a}.stat-card header{display:flex;align-items:center;gap:9px;padding:15px 16px;background:#11243a;border-bottom:1px solid var(--line)}.stat-card h3{margin:0;font-size:18px}.stat-total{margin-left:auto;color:var(--cyan);font-size:12px;font-weight:800}.stat-note{margin:0;padding:11px 16px;color:#ff9aac;background:#301c28;font-size:12px;line-height:1.5}.stat-head,.stat-row{display:grid;grid-template-columns:minmax(0,1fr) 70px 72px;gap:8px;align-items:center}.stat-head{padding:9px 15px;color:var(--muted);background:#0b1929;font-size:11px;font-weight:800}.stat-row{padding:10px 15px;border-top:1px solid #1a3049;font-size:13px}.stat-row:first-child{border-top:0}.stat-row span:nth-child(n+2){text-align:center;font-variant-numeric:tabular-nums}.stat-row .cost{color:var(--amber);font-weight:800}.stat-row .max{color:#a8c7ec}.stat-empty{grid-column:1/-1;padding:26px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center}
+    .source{margin-top:22px;color:var(--muted);font-size:12px;line-height:1.7}.hidden{display:none!important}
+    @media(max-width:800px){.wrap{padding:14px}.hero{padding:21px}.cards{grid-template-columns:1fr 1fr}.finding,.detached-grid,.stat-grid{grid-template-columns:1fr}.search{margin-left:0;width:100%}.zoom-controls{order:3}.tree{height:68vh;min-height:420px;padding-left:14px;padding-right:14px}.node{width:168px}.tree-content>ul>li>.node{width:220px}.stat-head,.stat-row{grid-template-columns:minmax(0,1fr) 58px 58px}.stat-row{padding:10px 12px}}
   </style>
 </head>
 <body>
@@ -45,6 +47,7 @@
     <button class="tab active" data-pane="treePane">메인 연결도</button>
     <button class="tab" data-pane="allPane">전체 메뉴 52개</button>
     <button class="tab" data-pane="detachedPane">미연결 메뉴 13개</button>
+    <button class="tab" data-pane="statsPane">클래스 스탯 목록</button>
   </nav>
 
   <section id="treePane" class="pane active">
@@ -76,6 +79,14 @@
     <div class="detached-grid" id="detachedCards"></div>
   </section>
 
+  <section id="statsPane" class="pane">
+    <div class="toolbar">
+      <span class="stat-summary" id="statCount"></span>
+      <input class="search" id="statSearch" placeholder="클래스 또는 스탯 이름 검색">
+    </div>
+    <div class="stat-grid" id="statGrid"></div>
+  </section>
+
   <p class="source">분석 기준: 저장소 <code>305like/FF2_RPG_SKILL</code>, 기본 브랜치 <code>main</code>, 트리 커밋 <code>2db7b76bc424ed967f078416ead6b099e71e2ed6</code>. 주요 분석 파일: <code>include/levelup/menu_system.inc</code>, <code>skill_menu.inc</code>, <code>scout_skill_system.inc</code>, <code>quest_system.inc</code>, <code>levelup_v2.sp</code>. 명령 진입점은 <code>sm_st</code>/<code>sm_level</code>, 퀵슬롯은 <code>alt2</code>, 스탯 검사는 <code>sm_스탯검사</code>/<code>sm_statcheck</code>입니다.</p>
 </main>
 
@@ -84,6 +95,7 @@ const n=(title,fn,children=[],meta="")=>({title,fn,children,meta});
 const choice=(title,children=[],meta="")=>n(title,"선택 항목",children,meta);
 const detail=(title,meta="")=>n(title,"화면 내 기능",[],meta);
 const classes=["스카웃","솔저","파이로","데모맨","헤비","엔지니어","메딕","스나이퍼","스파이"];
+const classStats=[{"name":"스카웃","stats":[["이동속도 3% 증가",1,5],["점프높이 5% 증가",1,10],["공격속도 5% 증가",1,10],["재장전속도 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["적중 시 체력 2 회복",1,5],["피해량 1% 증가",2,5],["재충전속도 5% 증가",2,5],["최대체력 10 증가",2,5],["장탄수 50% 증가",3,4],["집탄률 25% 증가",3,2],["발사되는 탄환수 50% 증가",4,2],["낙하 피해 무시",5,1]]},{"name":"솔저","stats":[["이동속도 3% 증가",1,5],["공격속도 5% 증가",1,10],["재장전속도 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["적중시 체력 5 회복",1,5],["피해량 1% 증가",2,5],["로켓점프 피해 5% 감소",2,10],["폭발반경 10% 증가",2,5],["투사체속도 10% 증가",2,5],["최대체력 10 증가",2,5],["장탄수 25% 증가",3,4],["깃발유지시간 25% 증가",3,4],["로켓특화",5,1]]},{"name":"파이로","stats":[["이동속도 3% 증가",1,5],["공격속도 5% 증가",1,10],["재장전속도 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["적중시 체력 3 회복",1,5],["화상피해 50% 증가",1,4],["화상 지속시간 25% 증가",1,5],["피해량 1% 증가",2,5],["최대체력 10 증가",2,5],["압축공기 발사속도 10% 증가",3,3],["사정거리 25% 증가",3,4],["가열가속기 재충전 속도 15% 증가",3,2],["가열가속기가 공중에서 사용가능합니다",4,1]]},{"name":"데모맨","stats":[["이동속도 3% 증가",1,5],["공격속도 5% 증가",1,10],["재장전속도 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["적중시 체력 2 회복",1,5],["점착 폭탄 충전속도 25% 증가",1,4],["피해량 1% 증가",2,5],["최대체력 10 증가",2,5],["폭발반경 10% 증가",2,5],["투사체속도 10% 증가",2,5],["폭발점프 피해 10% 감소",2,5],["폭탄 폭파 대기 시간 33% 감소",2,3],["돌격 재충전 속도 15% 증가",3,3],["근접 공격 범위 100%증가",3,2],["장탄수 25% 증가",3,4],["유탄이 적게 튀어오릅니다",4,1]]},{"name":"헤비","stats":[["이동속도 5% 증가",1,5],["공격속도 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["적중시 체력 2 회복",1,5],["재충전속도 10% 증가",1,5],["피해량 1% 증가",2,5],["총열 회전시 이동속도 25% 증가",2,2],["빠른 사격 준비 속도 10% 증가",2,4],["최대체력 25 증가",2,6],["투사체 파괴",3,1],["총열 회전시 피해 50의 불의고리 생성",3,1],["집탄률 25% 증가",3,2],["발사되는 탄환수 25% 증가",4,2],["뒤에서 공격하면 항상 치명타가 들어갑니다",5,1]]},{"name":"엔지니어","stats":[["이동속도 3% 증가",1,5],["공격속도 5% 증가",1,10],["재장전속도 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["적중시 체력 5 회복",1,5],["디스펜서 범위 200% 증가",1,4],["집탄률 25% 증가",1,2],["피해량 1% 증가",2,5],["최대금속 보유량 50% 증가",2,4],["건설속도 10% 증가",2,5],["최대체력 10 증가",2,5],["금속 5초마다 10 생성",2,5],["센트리 사정거리 10% 증가",3,4],["센트리 발사속도 10% 증가",3,4],["구조물 내구도 25% 증가",3,4],["장탄수 25% 증가",3,4],["양방향 텔레포트 활성화",4,1]]},{"name":"메딕","stats":[["이동속도 3% 증가",1,5],["공격속도 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["적중시 체력 2 회복",1,5],["피해량 1% 증가",2,5],["최대체력 10 증가",2,5],["치료율 10% 증가",2,5],["우버 충전율 5% 증가",3,5],["적중시 우버차지 1% 추가",3,5],["우버차지 지속시간 1초증가",3,5],["장탄수 100% 증가",3,4],["과치료 25% 증가",3,4],["투사체 보호막생성",5,1],["과치료 체력이 소멸되지 않습니다",5,1],["재장전속도 5% 증가",1,10]]},{"name":"스나이퍼","stats":[["이동속도 3% 증가",1,5],["공격속도 5% 증가",1,10],["재장전속도 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["적중시 체력 5 회복",1,5],["집탄률 25% 증가",1,2],["재충전속도 25% 증가",1,2],["피해량 1% 증가",2,5],["최대체력 10 증가",2,5],["초당 체력 재생 1 증가",2,5],["충전율 50% 증가",3,4],["충전사격시 병수도 효과 1초증가",3,5],["헤드샷 추가피해 25% 증가",3,4],["조준시 이동속도 저하없음",4,1],["완전충전시 피해 100%증가",4,1]]},{"name":"스파이","stats":[["이동속도 3% 증가",1,5],["공격속도 5% 증가",1,10],["재장전속도 5% 증가",1,10],["점프높이 5% 증가",1,10],["무기전환속도 15% 증가",1,3],["집탄률 25% 증가",1,2],["적중시 체력 5 회복",1,5],["피해량 1% 증가",2,5],["최대체력 10 증가",2,5],["초당 체력 재생 1 증가",2,5],["적중시 은폐 에너지 3% 증가",2,5],["적중시 이동속도 2초간 증가",3,2],["근접 공격 범위 25%증가",3,2],["2단점프 가능",4,1],["은폐 해제 음량감소",5,1],["낙하 피해 무시",5,1]]},{"name":"헤일","disabled":true,"note":"스탯 정의는 존재하지만 현재 클래스 스탯 메뉴에서는 사용 불가입니다.","stats":[["이동속도 3% 증가",1,10],["최대체력 2000증가",2,5],["근접 공격 범위 50%증가",2,2]]},{"name":"공용","stats":[["5초마다 탄약 10%생성",1,5],["피해량 1% 증가",2,5]]}];
 const treeData=n("메인 메뉴","Menu_ShowMain",[
   n("내정보","Menu_ShowPlayerInfo",[
     detail("레벨·경험치·포인트 등 표시","플레이어 성장 정보")
@@ -279,6 +291,28 @@ document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelect
 document.getElementById("expandAll").onclick=()=>{document.querySelectorAll(".branch").forEach(x=>{x.classList.remove("collapsed");x.querySelector(":scope > .node .arrow").textContent="▼"});requestAnimationFrame(updateTreeScale)};
 document.getElementById("collapseAll").onclick=()=>{document.querySelectorAll(".branch").forEach((x,i)=>{if(i>0&&x.parentElement.closest("li")!==root.firstElementChild){x.classList.add("collapsed");x.querySelector(":scope > .node .arrow").textContent="▶"}else{x.classList.remove("collapsed")}});requestAnimationFrame(updateTreeScale)};
 document.getElementById("treeSearch").oninput=e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll("#tree li").forEach(li=>li.classList.remove("hidden"));if(!q){requestAnimationFrame(updateTreeScale);return}document.querySelectorAll("#tree li").forEach(li=>{if(!li.dataset.search.includes(q)&&![...li.querySelectorAll("li")].some(c=>c.dataset.search.includes(q)))li.classList.add("hidden")});document.querySelectorAll("#tree .branch").forEach(x=>{x.classList.remove("collapsed");x.querySelector(":scope > .node .arrow").textContent="▼"});requestAnimationFrame(updateTreeScale)};
+
+const statGrid=document.getElementById("statGrid"),statCount=document.getElementById("statCount");
+function drawStats(q=""){
+  const query=q.trim().toLowerCase();
+  statGrid.innerHTML="";
+  let visibleStats=0,visibleClasses=0;
+  classStats.forEach(cls=>{
+    const classMatch=cls.name.toLowerCase().includes(query);
+    const stats=cls.stats.filter(s=>classMatch||s[0].toLowerCase().includes(query));
+    if(!stats.length)return;
+    visibleClasses++;visibleStats+=stats.length;
+    const card=document.createElement("article");
+    card.className="stat-card"+(cls.disabled?" disabled":"");
+    card.innerHTML='<header><h3>'+cls.name+'</h3>'+(cls.disabled?'<span class="tag disabled">메뉴 사용 불가</span>':'')+'<span class="stat-total">'+stats.length+'개</span></header>'+(cls.note?'<p class="stat-note">'+cls.note+'</p>':'')+'<div class="stat-head"><span>효과</span><span>필요</span><span>최대</span></div><div class="stat-list">'+stats.map(s=>'<div class="stat-row"><span>'+s[0]+'</span><span class="cost">'+s[1]+'pt</span><span class="max">'+s[2]+'회</span></div>').join("")+'</div>';
+    statGrid.appendChild(card);
+  });
+  if(!visibleClasses)statGrid.innerHTML='<div class="stat-empty">검색 결과가 없습니다.</div>';
+  const total=classStats.reduce((sum,c)=>sum+c.stats.length,0);
+  statCount.innerHTML=query?'<b>'+visibleStats+'</b>개 스탯 · <b>'+visibleClasses+'</b>개 분류 검색됨':'총 <b>'+total+'</b>개 스탯 · 일반 9클래스 + 헤일 + 공용';
+}
+drawStats();
+document.getElementById("statSearch").oninput=e=>drawStats(e.target.value);
 
 const tbody=document.getElementById("menuRows");
 function drawRows(q=""){tbody.innerHTML="";rawMenus.filter(m=>m.join(" ").toLowerCase().includes(q.toLowerCase())).forEach((m,i)=>{const tr=document.createElement("tr");tr.innerHTML='<td>'+(i+1)+'</td><td class="status-'+m[3]+'">'+(m[3]==="reachable"?"메인 연결":"메인 미연결")+'</td><td>'+m[1]+'</td><td><code>'+m[0]+'</code></td><td><code>'+m[2]+'</code></td><td class="muted">'+m[4]+'</td>';tbody.appendChild(tr)})}drawRows();
