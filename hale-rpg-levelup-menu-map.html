@@ -139,7 +139,11 @@ const treeData=n("메인 메뉴","Menu_ShowMain",[
     n("클래스 특수 능력","Menu_ShowSpecialAbilityClasses",[
       ...classes.map((name,i)=>choice(name,[
         n(name+" 특수 능력","Menu_ShowSpecialAbilityEmpty",[
-          detail(["자연의 도약", "레이저 포인트", "에프터 버너", "술병 치료", "벽타기", "AMP 디스펜서", "자석 메디건", "벽타기", "은신 중 이동속도 버프"][i]+" - on/off",["자연에 섭리 공중 반동 점프 1회 추가", "우클릭으로 로켓 레이저 유도 전환", "점프 후 다시 점프 키를 눌러 탄약 소모 비행", "술병 계열 도발 2.2초 후 체력 25 회복", "근접무기로 벽을 때려 도약", "!amp에서 증폭기·수리펜서 선택", "우버 25% 초과 시 공중에서 점프 키로 치료 대상 따라가기", "근접무기로 벽을 때려 도약", "은신 중 이동속도 +75, 해제 시 복구"][i]+" · 5000 포인트 + 스킬 포인트 2 · 최초 구매 후 ON/OFF 저장"),
+          n(["자연의 도약", "레이저 포인트", "에프터 버너", "술병 치료", "벽타기", "AMP 디스펜서", "자석 메디건", "벽타기", "은신 중 이동속도 버프"][i],"Menu_ShowSpecialAbilityDetail",[
+            detail("설명",["자연에 섭리 공중 반동 점프 1회 추가", "우클릭으로 로켓 레이저 유도 전환", "점프 후 다시 점프 키를 눌러 탄약 소모 비행", "술병 계열 도발 2.2초 후 체력 25 회복", "근접무기로 벽을 때려 도약", "!amp에서 증폭기·수리펜서 선택", "우버 충전량 제한 없이 공중에서 점프 키로 공중의 치료 대상 따라가기", "근접무기로 벽을 때려 도약", "은신 중 이동속도 +75, 해제 시 복구"][i]+" · 5000 포인트 + 스킬 포인트 2 · 최초 구매 후 ON/OFF 저장"),
+            detail("구매하시겠습니까? → 예","예를 눌렀을 때만 차감 · 구매 후 구매됨 - on · 이후 ON/OFF 전환"),
+            detail("뒤로가기","해당 클래스의 능력 목록으로")
+          ]),
           detail("뒤로가기","클래스 목록으로")
         ])
       ]))
@@ -248,7 +252,8 @@ const rawMenus=[
 ["ScoutSkills_ShowComingSoonMenu","클래스 스킬 준비 중","scout_skill_system.inc","reachable","스카웃 외 8개 클래스 공유"],
 ["ScoutSkills_ShowScoutMenu","스카웃 스킬 습득","scout_skill_system.inc","reachable","동적 스킬 목록"],
 ["Menu_ShowSpecialAbilityClasses","클래스 특수 능력","menu_system.inc","reachable","9개 클래스 선택"],
-["Menu_ShowSpecialAbilityEmpty","클래스 특수 능력 상세","menu_system.inc","reachable","9개 클래스 능력 구매·ON/OFF, 고정 키로 소유권과 상태 저장"],
+["Menu_ShowSpecialAbilityEmpty","클래스별 능력 목록","menu_system.inc","reachable","능력 이름을 선택해 설명 화면으로 이동"],
+["Menu_ShowSpecialAbilityDetail","특수능력 설명·구매 확인","menu_system.inc","reachable","예 → 구매됨 - on, 이후 ON/OFF 전환"],
 ["Menu_ShowSkinClasses","스킨 클래스 선택","menu_system.inc","reachable","9개 클래스"],
 ["Menu_ShowSkinEmpty","클래스별 스킨","menu_system.inc","reachable","비어있음·뒤로가기"],
 ["SkillMenu_ShowMain","신규 스킬 메뉴","skill_menu.inc","detached","현재 메인 스킬 버튼과 미연결"],
