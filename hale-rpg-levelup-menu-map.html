@@ -107,6 +107,7 @@
     </table></div>
   </section>
 
+  <p class="note">무기강화: 현재 강화 1회당 모든 클래스의 데미지 1% 증가. 메뉴 설명은 실제 정의값을 사용합니다.</p>
   <p class="source">분석 기준: 저장소 <code>305like/FF2_RPG_SKILL</code>, 기본 브랜치 <code>main</code>, 트리 커밋 <code>8f4186862b4c150afcc47e14e569f3c8d281ecf9</code>. 주요 분석 파일: <code>include/levelup/menu_system.inc</code>, <code>skill_menu.inc</code>, <code>scout_skill_system.inc</code>, <code>quest_system.inc</code>, <code>levelup_v2.sp</code>. 명령 진입점은 <code>sm_st</code>/<code>sm_level</code>, 퀵슬롯은 <code>alt2</code>, 스탯 검사는 <code>sm_스탯검사</code>/<code>sm_statcheck</code>입니다.</p>
 </main>
 
@@ -169,17 +170,24 @@ const treeData=n("메인 메뉴","Menu_ShowMain",[
     n("기타&잡템 목록","Menu_ShowInvMiscList",[n("기타 아이템 상세","Menu_ShowInvMiscDetail",[detail("아이템 정보 표시")])])
   ]),
   n("장비","Menu_ShowEquipment",[
-    n("장비 슬롯 상세","Menu_ShowEquipSlotDetail",[detail("일반 장비 장착·해제")]),
     n("무기 장착 - 클래스 선택","Menu_ShowEquipWeaponSelect",[
       ...classes.map(name=>choice(name,[
-        n(name+" 무기 슬롯 아이템","Menu_ShowWeaponSlotItems",[
-          detail("보유 무기 장착·해제","클래스별 동적 목록")
+        n(name+" 무기 슬롯","Menu_ShowWeaponSlotSelect",[
+          detail("주무기·보조무기·근접무기 [장착 무기명 / 비어있음]","스파이: 보조무기·근접무기·PDA"),
+          n("보유 무기 선택","Menu_ShowWeaponSlotItems",[detail("장착·해제")])
         ])
       ]))
     ]),
-    n("다음 → 특수 장비","Menu_ShowEquipment2",[
+    n("방어구 - 클래스 선택","Menu_ShowArmorClasses",[
+      ...classes.map(name=>choice(name,[n(name+" 방어구","Menu_ShowClassEquipment",[
+        n("방어구 슬롯 상세","Menu_ShowEquipSlotDetail",[detail("장착·해제")])
+      ])]))
+    ]),
+    n("스킨 - 클래스 선택","Menu_ShowSkinClasses",[
+      ...classes.map(name=>choice(name,[n(name+" 스킨","Menu_ShowSkinEmpty",[detail("비어있음 / 뒤로가기")])]))
+    ]),
+    n("특수장비 / 펫","Menu_ShowEquipment2",[
       choice("칭호",[detail("칭호 슬롯 항목")]),
-      choice("스킨",[detail("스킨 슬롯 항목")]),
       n("펫 장착 상세","Menu_ShowEquipPetDetail",[detail("펫 장착·해제")])
     ])
   ]),
@@ -240,6 +248,8 @@ const rawMenus=[
 ["ScoutSkills_ShowScoutMenu","스카웃 스킬 습득","scout_skill_system.inc","reachable","동적 스킬 목록"],
 ["Menu_ShowSpecialAbilityClasses","클래스 특수 능력","menu_system.inc","reachable","9개 클래스 선택"],
 ["Menu_ShowSpecialAbilityEmpty","클래스 특수 능력 상세","menu_system.inc","reachable","비어있음·뒤로가기"],
+["Menu_ShowSkinClasses","스킨 클래스 선택","menu_system.inc","reachable","9개 클래스"],
+["Menu_ShowSkinEmpty","클래스별 스킨","menu_system.inc","reachable","비어있음·뒤로가기"],
 ["SkillMenu_ShowMain","신규 스킬 메뉴","skill_menu.inc","detached","현재 메인 스킬 버튼과 미연결"],
 ["SkillMenu_ShowLearnCategory","신규 스킬 계열 선택","skill_menu.inc","detached","근접14·원거리14·마법14·기타5"],
 ["SkillMenu_ShowLearnList","신규 스킬 목록","skill_menu.inc","detached","페이지형 목록"],
