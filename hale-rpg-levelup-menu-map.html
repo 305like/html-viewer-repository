@@ -137,9 +137,10 @@ const treeData=n("메인 메뉴","Menu_ShowMain",[
       ]))
     ]),
     n("클래스 특수 능력","Menu_ShowSpecialAbilityClasses",[
-      ...classes.map(name=>choice(name,[
+      ...classes.map((name,i)=>choice(name,[
         n(name+" 특수 능력","Menu_ShowSpecialAbilityEmpty",[
-          detail("비어있음","선택 불가"),detail("뒤로가기","클래스 목록으로")
+          detail(["올드 샌드맨", "레이저 포인트", "에프터 버너", "술병 치료", "벽타기", "AMP 디스펜서", "자석 메디건", "벽타기", "은신 중 이동속도 버프"][i]+" [준비 중]",i===0?"샌드맨 적중 시 기절 · 5000 포인트 + 3 스킬 포인트 · 구매/ON·OFF 추후 연결":"능력 효과 추후 연결"),
+          detail("뒤로가기","클래스 목록으로")
         ])
       ]))
     ]),
@@ -247,7 +248,7 @@ const rawMenus=[
 ["ScoutSkills_ShowComingSoonMenu","클래스 스킬 준비 중","scout_skill_system.inc","reachable","스카웃 외 8개 클래스 공유"],
 ["ScoutSkills_ShowScoutMenu","스카웃 스킬 습득","scout_skill_system.inc","reachable","동적 스킬 목록"],
 ["Menu_ShowSpecialAbilityClasses","클래스 특수 능력","menu_system.inc","reachable","9개 클래스 선택"],
-["Menu_ShowSpecialAbilityEmpty","클래스 특수 능력 상세","menu_system.inc","reachable","비어있음·뒤로가기"],
+["Menu_ShowSpecialAbilityEmpty","클래스 특수 능력 상세","menu_system.inc","reachable","9개 능력 준비 중·뒤로가기"],
 ["Menu_ShowSkinClasses","스킨 클래스 선택","menu_system.inc","reachable","9개 클래스"],
 ["Menu_ShowSkinEmpty","클래스별 스킨","menu_system.inc","reachable","비어있음·뒤로가기"],
 ["SkillMenu_ShowMain","신규 스킬 메뉴","skill_menu.inc","detached","현재 메인 스킬 버튼과 미연결"],
