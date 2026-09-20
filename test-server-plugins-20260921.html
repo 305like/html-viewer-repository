@@ -1,0 +1,1170 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>테스트 서버 플러그인 · 2026-09-21</title><style>
+:root{color-scheme:dark;--bg:#10151f;--panel:#192231;--line:#344359;--text:#e9eef7;--muted:#a9b8cc;--accent:#76d7c4}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,'Malgun Gothic',sans-serif}main{max-width:1200px;margin:auto;padding:36px 20px}h1{font-size:32px;margin:8px 0}h2{font-size:20px;margin:0;flex:1}a{color:var(--accent)}.lead,.muted,.meta{color:var(--muted)}.meta{font-size:14px;overflow-wrap:anywhere}code{font:14px/1.6 Consolas,monospace;color:#9ee5db;overflow-wrap:anywhere}.stats{display:flex;gap:16px;flex-wrap:wrap;margin:24px 0}.stat{background:var(--panel);padding:12px 24px;border-radius:12px}.stat b{font-size:26px;color:var(--accent);margin-right:10px}.notice{border-left:3px solid var(--accent);padding:8px 18px;background:#16262c}.toolbar{position:sticky;top:0;background:#10151ff5;padding:14px 0;z-index:1;display:flex;gap:10px;flex-wrap:wrap}input,select,button{font:inherit;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text)}input{flex:1;min-width:210px}button{cursor:pointer}button:hover{border-color:var(--accent)}article{padding:22px;margin:16px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px}header{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.num{color:var(--muted);font:18px monospace}.badge{font-size:12px;border:1px solid #3a7a70;border-radius:20px;padding:2px 10px;color:var(--accent)}summary{cursor:pointer;color:var(--accent);padding:8px 0}table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}th{text-align:left;color:var(--muted)}td,th{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{min-width:180px}td:last-child{min-width:240px}.scroll{overflow:auto}.evidence{font-size:13px}pre{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted)}small.warn{display:block;color:#ffd08a}footer{padding:28px 0;color:var(--muted)}[hidden]{display:none!important}@media print{body{background:white;color:black}.toolbar{display:none}article{break-inside:avoid;background:white;color:black}code,summary,.meta,.lead{color:#234}details{display:block}}
+</style></head><body><main><div class="lead">LIVE SNAPSHOT · TF2 / SOURCEMOD</div><h1>테스트 서버 플러그인 안내</h1><p class="lead">[KR] 수상한 거래서버 · 포트 27019 · 조회 2026-09-21 06:50:43 KST</p><div class="stats"><div class="stat"><b>75</b>전체</div><div class="stat"><b>75</b>실행 중</div><div class="stat"><b>0</b>비실행 / 미확인</div><div class="stat"><b>245</b>명령 등록 행</div></div><div class="notice"><p>실시간 서버의 <code>sm plugins list</code>, <code>sm plugins info</code>, <code>sm cmds</code>와 긴 이름의 <code>find</code> 조회를 기준으로 작성했습니다. 기능은 메타데이터·등록 도움말을 한국어로 요약했으며, 각 항목에서 원문을 확인할 수 있습니다. 수집 전후 플러그인 목록은 동일했습니다.</p><p>* <code>sm_명령</code>의 <code>!명령</code>은 SourceMod 기본 채팅 표기입니다. 채팅 트리거 설정에 따라 달라질 수 있습니다. <b>일반 명령 등록이 모든 유저의 사용 허용을 보장하지는 않습니다.</b> 플러그인 내부 권한 검사와 관리자 오버라이드는 별도입니다. 명령은 조회만 했으며 실행하지 않았습니다.</p><p>엔진/.so 자체 명령, 콘바, 설정 파일의 사운드 키워드, 키 입력 조작은 전체 목록에 포함하지 않습니다. 관리자 명령 중 삭제·킥·맵 변경 등은 실제 상태를 바꾸므로 주의하세요.</p></div><div class="toolbar"><input id="search" type="search" aria-label="플러그인 또는 명령 검색" placeholder="검색: 펫, npc, sm_pe, 파일명…"><select id="filter" aria-label="목록 필터"><option value="all">전체</option><option value="commands">명령어 있음</option><option value="auto">등록 명령 없음</option></select><button id="expand">전체 펼치기</button><button id="collapse">전체 접기</button></div><p id="count" class="muted" aria-live="polite"></p><article data-type="commands"><header><span class="num">01</span><h2>Scout CWX Dual Pistol Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>scout_dual_cwx_test.smx</code> · v0.3.3</p><p>스카웃에게 30초짜리 CWX 쌍권총을 지급하는 테스트. 플레이어와 레벨 1~5를 지정합니다.</p>
+<details><summary>명령어 2개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_scoutdual</code></td><td><code>!scoutdual</code></td><td>관리자 등록</td><td>30-second Scout dual pistols: sm_scoutdual [player] [level 1-5]</td></tr><tr><td><code>sm_scoutdual_status</code></td><td><code>!scoutdual_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: scout_dual_cwx_test.smx
+  Title: Scout CWX Dual Pistol Test (Thirty-second native dual pistols with a HUD-free fourth-slot selector)
+  Author: 305like
+  Version: 0.3.3
+  Status: running
+  Timestamp: 09/21/2026 06:11:02
+  Hash: 87619861816360473a09ff2cfca05536
+
+[SM] Listing commands for: Scout CWX Dual Pistol Test
+  [Name]            [Type]   [Help]
+  sm_scoutdual      admin        30-second Scout dual pistols: sm_scoutdual [player] [level 1-5]
+  sm_scoutdual_sta  admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">02</span><h2>Scout Cut-in Overlay</h2><span class="badge">running</span></header>
+<p class="meta"><code>scout_cutin_overlay.smx</code> · v1.1.0</p><p>스카웃 스킬 컷인 이미지를 화면 오버레이로 표시합니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_scout</code></td><td><code>!scout</code></td><td>관리자 등록</td><td>Show the Scout cut-in overlay</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: scout_cutin_overlay.smx
+  Title: Scout Cut-in Overlay (Admin-only Scout skill cut-in)
+  Author: OpenAI
+  Version: 1.1.0
+  Status: running
+  Timestamp: 08/29/2026 08:15:39
+  Hash: 9c44e17f0e436528488bdbacc043b345
+
+[SM] Listing commands for: Scout Cut-in Overlay
+  [Name]            [Type]   [Help]
+  sm_scout          admin        Show the Scout cut-in overlay
+</pre></details></details></article><article data-type="commands"><header><span class="num">03</span><h2>stopsound.smx</h2><span class="badge">running</span></header>
+<p class="meta"><code>stopsound.smx</code> · v미표기</p><p>소리 중지 명령을 제공하는 플러그인입니다. 세부 중지 범위는 메타데이터에 없습니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_stopsound</code></td><td><code>!stopsound</code></td><td>일반 명령 등록</td><td>Send client cmd play misc\null.wav</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: stopsound.smx
+  Status: running
+  Timestamp: 04/20/2024 14:27:59
+  Hash: c15b79524be6ba08ad08467ec68e1c5b
+
+[SM] Listing commands for: stopsound.smx
+  [Name]            [Type]   [Help]
+  sm_stopsound      console      Send client cmd play misc\null.wav
+</pre></details></details></article><article data-type="commands"><header><span class="num">04</span><h2>[TF2] Custom Attribute : Replace Sound</h2><span class="badge">running</span></header>
+<p class="meta"><code>ca_replace_sound.smx</code> · v1.0</p><p>커스텀 속성으로 지정된 소리를 다른 소리로 대체합니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>ca_sound_replace_reload</code></td><td>—</td><td>서버 전용</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: ca_replace_sound.smx
+  Title: [TF2] Custom Attribute : Replace Sound (Replace it to the sound you want.)
+  Author: Mir
+  Version: 1.0
+  URL: https://github.com/gaejuck/SM-TF2-CA-ReplaceSound
+  Status: running
+  Timestamp: 08/23/2026 18:43:37
+  Hash: c518895cd8de1f2cf9b31d159770d38b
+
+[SM] Listing commands for: [TF2] Custom Attribute : Replace Sound
+  [Name]            [Type]   [Help]
+  ca_sound_replace  server       
+</pre></details></details></article><article data-type="commands"><header><span class="num">05</span><h2>Server_Default_Plugin</h2><span class="badge">running</span></header>
+<p class="meta"><code>Server_Default_Plugin.smx</code> · v1.4</p><p>서버 기본 기능 묶음. 1·3인칭, 무기 제거, 무한 탄약, 무적, 플레이어 이동, 신체 크기, 발사 속도 등을 다룹니다.</p>
+<details><summary>명령어 34개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>fp</code></td><td>—</td><td>일반 명령 등록</td><td>Usage: sm_firstperson</td></tr><tr><td><code>helloserverplugintogglethirdpresononmeplease</code></td><td>—</td><td>일반 명령 등록</td><td>Hi Leonardo</td></tr><tr><td><code>sm_bring</code></td><td><code>!bring</code></td><td>일반 명령 등록</td><td>Teleport a player to you</td></tr><tr><td><code>sm_civ</code></td><td><code>!civ</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_fia</code></td><td><code>!fia</code></td><td>관리자 등록</td><td>Give Infinite Ammo to a target - Usage: sm_fia &quot;target&quot; &quot;1/0&quot;</td></tr><tr><td><code>sm_fia2</code></td><td><code>!fia2</code></td><td>관리자 등록</td><td>Give Infinite Ammo to target(s) for a limited time - Usage: sm_fia2 &quot;target&quot; &quot;duration(in seconds)&quot;</td></tr><tr><td><code>sm_firstperson</code></td><td><code>!firstperson</code></td><td>일반 명령 등록</td><td>Usage: sm_firstperson</td></tr><tr><td><code>sm_fp</code></td><td><code>!fp</code></td><td>일반 명령 등록</td><td>Usage: sm_fp</td></tr><tr><td><code>sm_full_infinite_ammo</code></td><td><code>!full_infinite_ammo</code></td><td>관리자 등록</td><td>Give Infinite Ammo to a target - Usage: sm_full_infinite_ammo &quot;target&quot; &quot;1/0&quot;</td></tr><tr><td><code>sm_full_infinite_ammo_timed</code></td><td><code>!full_infinite_ammo_timed</code></td><td>관리자 등록</td><td>Give Infinite Ammo to target(s) for a limited time - Usage: sm_full_infinite_ammo_timed &quot;target&quot; &quot;duration(in seconds)&quot;</td></tr><tr><td><code>sm_godmode</code></td><td><code>!godmode</code></td><td>관리자 등록</td><td>sm_godmode &lt;#userid|name&gt; - Invulnerability to bullets, falling, and map traps.</td></tr><tr><td><code>sm_goto</code></td><td><code>!goto</code></td><td>일반 명령 등록</td><td>Go to a player</td></tr><tr><td><code>sm_grab</code></td><td><code>!grab</code></td><td>관리자 등록</td><td>Grab whatever you are aiming at, or drop it if already holding something</td></tr><tr><td><code>sm_ks</code></td><td><code>!ks</code></td><td>일반 명령 등록</td><td>Set your killstreak.</td></tr><tr><td><code>sm_resize</code></td><td><code>!resize</code></td><td>관리자 등록</td><td>Toggles a client&#x27;s size.</td></tr><tr><td><code>sm_resizehands</code></td><td><code>!resizehands</code></td><td>관리자 등록</td><td>Toggles a client&#x27;s hand size.</td></tr><tr><td><code>sm_resizehead</code></td><td><code>!resizehead</code></td><td>관리자 등록</td><td>Toggles a client&#x27;s head size.</td></tr><tr><td><code>sm_resizeme</code></td><td><code>!resizeme</code></td><td>관리자 등록</td><td>Toggles a client&#x27;s size.</td></tr><tr><td><code>sm_resizemyhands</code></td><td><code>!resizemyhands</code></td><td>관리자 등록</td><td>Toggles a client&#x27;s hand size.</td></tr><tr><td><code>sm_resizemyhead</code></td><td><code>!resizemyhead</code></td><td>관리자 등록</td><td>Toggles a client&#x27;s head size.</td></tr><tr><td><code>sm_resizemytorso</code></td><td><code>!resizemytorso</code></td><td>관리자 등록</td><td>Toggles a client&#x27;s torso size.</td></tr><tr><td><code>sm_resizereset</code></td><td><code>!resizereset</code></td><td>관리자 등록</td><td>Resets a client&#x27;s size.</td></tr><tr><td><code>sm_resizeresetme</code></td><td><code>!resizeresetme</code></td><td>관리자 등록</td><td>Resets a client&#x27;s size.</td></tr><tr><td><code>sm_resizetorso</code></td><td><code>!resizetorso</code></td><td>관리자 등록</td><td>Toggles a client&#x27;s torso size.</td></tr><tr><td><code>sm_restart</code></td><td><code>!restart</code></td><td>관리자 등록</td><td>Restart the current map</td></tr><tr><td><code>sm_rof</code></td><td><code>!rof</code></td><td>일반 명령 등록</td><td>Set Rate of Fire</td></tr><tr><td><code>sm_strip</code></td><td><code>!strip</code></td><td>관리자 등록</td><td>&lt;sm_strip|say !strip&gt; &lt;#userid|name|targets&gt; &lt;[slots]&gt;; Remove weapons specified in 2nd arg, or in &#x27;swfp_slot_default&#x27; if not present</td></tr><tr><td><code>sm_stripall</code></td><td><code>!stripall</code></td><td>관리자 등록</td><td>&lt;sm_stripall|say !stripall&gt; &lt;#userid|name|targets&gt; ; Remove all weapons with slot lower or equals swfp_slot_max</td></tr><tr><td><code>sm_stripbut</code></td><td><code>!stripbut</code></td><td>관리자 등록</td><td>&lt;sm_stripbut|say !stripbut&gt; &lt;#userid|name|targets&gt; &lt;slot&gt; ; slot is 1-based ; Remove all weapons with slot lower or equals swfp_slot_max from target except those in 2nd-argument slot</td></tr><tr><td><code>sm_telemenu</code></td><td><code>!telemenu</code></td><td>일반 명령 등록</td><td>Opens the Teleport Menu</td></tr><tr><td><code>sm_thirdperson</code></td><td><code>!thirdperson</code></td><td>일반 명령 등록</td><td>Usage: sm_thirdperson</td></tr><tr><td><code>sm_toss</code></td><td><code>!toss</code></td><td>관리자 등록</td><td>Throw the object you are holding</td></tr><tr><td><code>sm_tp</code></td><td><code>!tp</code></td><td>일반 명령 등록</td><td>Usage: sm_tp</td></tr><tr><td><code>tp</code></td><td>—</td><td>일반 명령 등록</td><td>Usage: sm_thirdperson</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: Server_Default_Plugin.smx
+  Title: Server_Default_Plugin (Civilian pose, killstreak toggle, thirdperson view, full infinite ammo, godmode with effects, goto/bring teleport, and rate of fire)
+  Author: dada513 / Dr_Knuckles / Kredit / DarthNinja / Tylerst / Twin_Future / Headline / EHG
+  Version: 1.4
+  URL: https://github.com/dada513/tf2-civplugin
+  Status: running
+  Timestamp: 08/07/2026 18:57:44
+  Hash: c6cda8a1e603396d5a07eca064a898c9
+
+[SM] Listing commands for: Server_Default_Plugin
+  [Name]            [Type]   [Help]
+  fp                console      Usage: sm_firstperson
+  helloserverplugi  console      Hi Leonardo
+  sm_bring          console      Teleport a player to you
+  sm_civ            console      
+  sm_fia            admin        Give Infinite Ammo to a target - Usage: sm_fia &quot;target&quot; &quot;1/0&quot;
+  sm_fia2           admin        Give Infinite Ammo to target(s) for a limited time - Usage: sm_fia2 &quot;target&quot; &quot;duration(in seconds)&quot;
+  sm_firstperson    console      Usage: sm_firstperson
+  sm_fp             console      Usage: sm_fp
+  sm_full_infinite  admin        Give Infinite Ammo to a target - Usage: sm_full_infinite_ammo &quot;target&quot; &quot;1/0&quot;
+  sm_full_infinite  admin        Give Infinite Ammo to target(s) for a limited time - Usage: sm_full_infinite_ammo_timed &quot;target&quot; &quot;duration(in seconds)&quot;
+  sm_godmode        admin        sm_godmode &lt;#userid|name&gt; - Invulnerability to bullets, falling, and map traps.
+  sm_goto           console      Go to a player
+  sm_grab           admin        Grab whatever you are aiming at, or drop it if already holding something
+  sm_ks             console      Set your killstreak.
+  sm_resize         admin        Toggles a client&#x27;s size.
+  sm_resizehands    admin        Toggles a client&#x27;s hand size.
+  sm_resizehead     admin        Toggles a client&#x27;s head size.
+  sm_resizeme       admin        Toggles a client&#x27;s size.
+  sm_resizemyhands  admin        Toggles a client&#x27;s hand size.
+  sm_resizemyhead   admin        Toggles a client&#x27;s head size.
+  sm_resizemytorso  admin        Toggles a client&#x27;s torso size.
+  sm_resizereset    admin        Resets a client&#x27;s size.
+  sm_resizeresetme  admin        Resets a client&#x27;s size.
+  sm_resizetorso    admin        Toggles a client&#x27;s torso size.
+  sm_restart        admin        Restart the current map
+  sm_rof            console      Set Rate of Fire
+  sm_strip          admin        &lt;sm_strip|say !strip&gt; &lt;#userid|name|targets&gt; &lt;[slots]&gt;; Remove weapons specified in 2nd arg, or in &#x27;swfp_slot_default&#x27; if not present
+  sm_stripall       admin        &lt;sm_stripall|say !stripall&gt; &lt;#userid|name|targets&gt; ; Remove all weapons with slot lower or equals swfp_slot_max
+  sm_stripbut       admin        &lt;sm_stripbut|say !stripbut&gt; &lt;#userid|name|targets&gt; &lt;slot&gt; ; slot is 1-based ; Remove all weapons with slot lower or equals swfp_slot_max from target except those in 2nd-argument slot
+  sm_telemenu       console      Opens the Teleport Menu
+  sm_thirdperson    console      Usage: sm_thirdperson
+  sm_toss           admin        Throw the object you are holding
+  sm_tp             console      Usage: sm_tp
+  tp                console      Usage: sm_thirdperson
+</pre></details></details></article><article data-type="auto"><header><span class="num">06</span><h2>Anti-Flood</h2><span class="badge">running</span></header>
+<p class="meta"><code>antiflood.smx</code> · v1.12.0.7239</p><p>채팅 도배 방지. 별도 사용자 명령 없이 작동합니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: antiflood.smx
+  Title: Anti-Flood (Protects against chat flooding)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: 1f6132559ba867c7884aea93e9a69db0
+
+[SM] No commands found for: Anti-Flood
+</pre></details></details></article><article data-type="commands"><header><span class="num">07</span><h2>Basic Chat</h2><span class="badge">running</span></header>
+<p class="meta"><code>basechat.smx</code> · v1.12.0.7239</p><p>관리자 채팅, 공지, 개인 메시지 등 기본 의사소통 명령입니다.</p>
+<details><summary>명령어 8개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_chat</code></td><td><code>!chat</code></td><td>관리자 등록</td><td>sm_chat &lt;message&gt; - sends message to admins</td></tr><tr><td><code>sm_csay</code></td><td><code>!csay</code></td><td>관리자 등록</td><td>sm_csay &lt;message&gt; - sends centered message to all players</td></tr><tr><td><code>sm_dsay</code></td><td><code>!dsay</code></td><td>관리자 등록</td><td>sm_dsay &lt;message&gt; - sends hud message to all players</td></tr><tr><td><code>sm_hsay</code></td><td><code>!hsay</code></td><td>관리자 등록</td><td>sm_hsay &lt;message&gt; - sends hint message to all players</td></tr><tr><td><code>sm_msay</code></td><td><code>!msay</code></td><td>관리자 등록</td><td>sm_msay &lt;message&gt; - sends message as a menu panel</td></tr><tr><td><code>sm_psay</code></td><td><code>!psay</code></td><td>관리자 등록</td><td>sm_psay &lt;name or #userid&gt; &lt;message&gt; - sends private message</td></tr><tr><td><code>sm_say</code></td><td><code>!say</code></td><td>관리자 등록</td><td>sm_say &lt;message&gt; - sends message to all players</td></tr><tr><td><code>sm_tsay</code></td><td><code>!tsay</code></td><td>관리자 등록</td><td>sm_tsay [color] &lt;message&gt; - sends top-left message to all players</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: basechat.smx
+  Title: Basic Chat (Basic Communication Commands)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: e10f1d8591cd916e0f3313d441ce2eeb
+
+[SM] Listing commands for: Basic Chat
+  [Name]            [Type]   [Help]
+  sm_chat           admin        sm_chat &lt;message&gt; - sends message to admins
+  sm_csay           admin        sm_csay &lt;message&gt; - sends centered message to all players
+  sm_dsay           admin        sm_dsay &lt;message&gt; - sends hud message to all players
+  sm_hsay           admin        sm_hsay &lt;message&gt; - sends hint message to all players
+  sm_msay           admin        sm_msay &lt;message&gt; - sends message as a menu panel
+  sm_psay           admin        sm_psay &lt;name or #userid&gt; &lt;message&gt; - sends private message
+  sm_say            admin        sm_say &lt;message&gt; - sends message to all players
+  sm_tsay           admin        sm_tsay [color] &lt;message&gt; - sends top-left message to all players
+</pre></details></details></article><article data-type="commands"><header><span class="num">08</span><h2>[TF2] Gravity Hands</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf2gravihands.smx</code> · v26w30a-turret1</p><p>무기를 내려놓고 물체를 잡는 중력건 방식의 Gravity Hands 기능입니다.</p>
+<details><summary>명령어 2개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_hands</code></td><td><code>!hands</code></td><td>일반 명령 등록</td><td>Put away weapons</td></tr><tr><td><code>sm_holster</code></td><td><code>!holster</code></td><td>일반 명령 등록</td><td>Put away weapons</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf2gravihands.smx
+  Title: [TF2] Gravity Hands (Budget Gravity Gun for TF2)
+  Author: reBane
+  Version: 26w30a-turret1
+  URL: N/A
+  Status: running
+  Timestamp: 09/16/2026 02:35:33
+  Hash: 9da3c970107289ba309b119dc0484d3d
+
+[SM] Listing commands for: [TF2] Gravity Hands
+  [Name]            [Type]   [Help]
+  sm_hands          console      Put away weapons
+  sm_holster        console      Put away weapons
+</pre></details></details></article><article data-type="commands"><header><span class="num">09</span><h2>Say Sounds</h2><span class="badge">running</span></header>
+<p class="meta"><code>saysounds.smx</code> · v4.0.8</p><p>채팅 키워드나 게임 행동에 맞춰 소리를 재생합니다. 개별 소리 키워드는 설정 파일에 따라 달라집니다.</p>
+<details><summary>명령어 9개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_admin_sounds</code></td><td><code>!admin_sounds</code></td><td>관리자 등록</td><td>Display a menu of Admin sounds to play</td></tr><tr><td><code>sm_all_sounds</code></td><td><code>!all_sounds</code></td><td>관리자 등록</td><td>Display a menu of ALL sounds to play</td></tr><tr><td><code>sm_karaoke</code></td><td><code>!karaoke</code></td><td>관리자 등록</td><td>Display a menu of Karaoke songs to play</td></tr><tr><td><code>sm_sound_ban</code></td><td><code>!sound_ban</code></td><td>관리자 등록</td><td>sm_sound_ban &lt;user&gt; : Bans a player from using sounds</td></tr><tr><td><code>sm_sound_list</code></td><td><code>!sound_list</code></td><td>일반 명령 등록</td><td>List available sounds to console</td></tr><tr><td><code>sm_sound_menu</code></td><td><code>!sound_menu</code></td><td>일반 명령 등록</td><td>Display a menu of sounds to play</td></tr><tr><td><code>sm_sound_reset</code></td><td><code>!sound_reset</code></td><td>관리자 등록</td><td>sm_sound_reset &lt;user | all&gt; : Resets sound quota for user, or everyone if all</td></tr><tr><td><code>sm_sound_unban</code></td><td><code>!sound_unban</code></td><td>관리자 등록</td><td>sm_sound_unban &lt;user&gt; : Unbans a player from using sounds</td></tr><tr><td><code>sm_stopsound</code></td><td><code>!stopsound</code></td><td>일반 명령 등록</td><td>Stop all currently playing say sounds (bindable)</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: saysounds.smx
+  Title: Say Sounds (including Hybrid Edition) (Say Sounds and Action Sounds packaged into one neat plugin! Welcome to the new day of SaySounds Hybrid!)
+  Author: Hell Phoenix|Naris|FernFerret|Uberman|psychonic|edgecom|woody|Miraculix|gH0sTy
+  Version: 4.0.8
+  URL: http://forums.alliedmods.net/showthread.php?t=82220
+  Status: running
+  Timestamp: 08/02/2026 20:54:38
+  Hash: 2d58726421d9fe90510dc3f1806e0b5b
+
+[SM] Listing commands for: Say Sounds (including Hybrid Edition)
+  [Name]            [Type]   [Help]
+  sm_admin_sounds   admin        Display a menu of Admin sounds to play
+  sm_all_sounds     admin        Display a menu of ALL sounds to play
+  sm_karaoke        admin        Display a menu of Karaoke songs to play
+  sm_sound_ban      admin        sm_sound_ban &lt;user&gt; : Bans a player from using sounds
+  sm_sound_list     console      List available sounds to console
+  sm_sound_menu     console      Display a menu of sounds to play
+  sm_sound_reset    admin        sm_sound_reset &lt;user | all&gt; : Resets sound quota for user, or everyone if all
+  sm_sound_unban    admin        sm_sound_unban &lt;user&gt; : Unbans a player from using sounds
+  sm_stopsound      console      Stop all currently playing say sounds (bindable)
+</pre></details></details></article><article data-type="commands"><header><span class="num">10</span><h2>Basic Ban Commands</h2><span class="badge">running</span></header>
+<p class="meta"><code>basebans.smx</code> · v1.12.0.7239</p><p>플레이어 차단·차단 해제 등 기본 밴 관리입니다.</p>
+<details><summary>명령어 5개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_abortban</code></td><td><code>!abortban</code></td><td>일반 명령 등록</td><td>sm_abortban</td></tr><tr><td><code>sm_addban</code></td><td><code>!addban</code></td><td>관리자 등록</td><td>sm_addban &lt;time&gt; &lt;steamid&gt; [reason]</td></tr><tr><td><code>sm_ban</code></td><td><code>!ban</code></td><td>관리자 등록</td><td>sm_ban &lt;#userid|name&gt; &lt;minutes|0&gt; [reason]</td></tr><tr><td><code>sm_banip</code></td><td><code>!banip</code></td><td>관리자 등록</td><td>sm_banip &lt;ip|#userid|name&gt; &lt;time&gt; [reason]</td></tr><tr><td><code>sm_unban</code></td><td><code>!unban</code></td><td>관리자 등록</td><td>sm_unban &lt;steamid|ip&gt;</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: basebans.smx
+  Title: Basic Ban Commands (Basic Banning Commands)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: 465e945367a884c6e2abc9cbe7e31580
+
+[SM] Listing commands for: Basic Ban Commands
+  [Name]            [Type]   [Help]
+  sm_abortban       console      sm_abortban
+  sm_addban         admin        sm_addban &lt;time&gt; &lt;steamid&gt; [reason]
+  sm_ban            admin        sm_ban &lt;#userid|name&gt; &lt;minutes|0&gt; [reason]
+  sm_banip          admin        sm_banip &lt;ip|#userid|name&gt; &lt;time&gt; [reason]
+  sm_unban          admin        sm_unban &lt;steamid|ip&gt;
+</pre></details></details></article><article data-type="commands"><header><span class="num">11</span><h2>TF2 Farm System</h2><span class="badge">running</span></header>
+<p class="meta"><code>farm_system.smx</code> · v1.1.0</p><p>농장 메뉴, 돈, 인벤토리와 아이템 지급·저장 등 농장 시스템입니다.</p>
+<details><summary>명령어 8개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_farm</code></td><td><code>!farm</code></td><td>일반 명령 등록</td><td>농장 메뉴</td></tr><tr><td><code>sm_farmdb</code></td><td><code>!farmdb</code></td><td>관리자 등록</td><td>DB 상태</td></tr><tr><td><code>sm_farmsave</code></td><td><code>!farmsave</code></td><td>관리자 등록</td><td>전체 저장</td></tr><tr><td><code>sm_farmstatus</code></td><td><code>!farmstatus</code></td><td>관리자 등록</td><td>플레이어 상태</td></tr><tr><td><code>sm_giveitem</code></td><td><code>!giveitem</code></td><td>관리자 등록</td><td>아이템 지급</td></tr><tr><td><code>sm_givemoney</code></td><td><code>!givemoney</code></td><td>관리자 등록</td><td>돈 지급</td></tr><tr><td><code>sm_inv</code></td><td><code>!inv</code></td><td>일반 명령 등록</td><td>인벤토리</td></tr><tr><td><code>sm_money</code></td><td><code>!money</code></td><td>일반 명령 등록</td><td>내 돈 확인</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: farm_system.smx
+  Title: TF2 Farm System (TF2 농장 시스템)
+  Author: 305like
+  Version: 1.1.0
+  Status: running
+  Timestamp: 09/09/2026 00:04:16
+  Hash: 50f67ffc6f6c281c05a409073aee1e5b
+
+[SM] Listing commands for: TF2 Farm System
+  [Name]            [Type]   [Help]
+  sm_farm           console      농장 메뉴
+  sm_farmdb         admin        DB 상태
+  sm_farmsave       admin        전체 저장
+  sm_farmstatus     admin        플레이어 상태
+  sm_giveitem       admin        아이템 지급
+  sm_givemoney      admin        돈 지급
+  sm_inv            console      인벤토리
+  sm_money          console      내 돈 확인
+</pre></details></details></article><article data-type="commands"><header><span class="num">12</span><h2>Model Inspector 18</h2><span class="badge">running</span></header>
+<p class="meta"><code>solar_flare_model_test.smx</code> · v3.2.1</p><p>등록된 모델을 생성하고 메뉴에서 모델 및 애니메이션 시퀀스를 검사합니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_18</code></td><td><code>!18</code></td><td>일반 명령 등록</td><td>모델 검사 메뉴를 엽니다.</td></tr><tr><td><code>sm_seq</code></td><td><code>!seq</code></td><td>일반 명령 등록</td><td>현재 모델의 시퀀스로 이동합니다: !seq &lt;번호&gt;</td></tr><tr><td><code>sm_시퀀스</code></td><td><code>!시퀀스</code></td><td>일반 명령 등록</td><td>현재 모델의 시퀀스로 이동합니다: !시퀀스 &lt;번호&gt;</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: solar_flare_model_test.smx
+  Title: Model Inspector 18 (Spawn and inspect registered models from one menu)
+  Author: OpenAI
+  Version: 3.2.1
+  Status: running
+  Timestamp: 09/09/2026 03:09:21
+  Hash: 44a326b450b361febe4e725292f32aac
+
+[SM] Listing commands for: Model Inspector 18
+  [Name]            [Type]   [Help]
+  sm_18             console      모델 검사 메뉴를 엽니다.
+  sm_seq            console      현재 모델의 시퀀스로 이동합니다: !seq &lt;번호&gt;
+  sm_시퀀스      console      현재 모델의 시퀀스로 이동합니다: !시퀀스 &lt;번호&gt;
+</pre></details></details></article><article data-type="commands"><header><span class="num">13</span><h2>Spy Plane</h2><span class="badge">running</span></header>
+<p class="meta"><code>spy_plane.smx</code> · v1.10.0</p><p>스파이 비행 기능. 기존 무기를 보관·복원하는 방식입니다.</p>
+<details><summary>명령어 6개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_plane</code></td><td><code>!plane</code></td><td>일반 명령 등록</td><td>Toggle Spy T pose and airplane attachment</td></tr><tr><td><code>sm_planedebug</code></td><td><code>!planedebug</code></td><td>일반 명령 등록</td><td>Toggle own plane damage trace visualization</td></tr><tr><td><code>sm_planemuzzle</code></td><td><code>!planemuzzle</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_planeprop</code></td><td><code>!planeprop</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_spyplane</code></td><td><code>!spyplane</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_spyplane_check</code></td><td><code>!spyplane_check</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: spy_plane.smx
+  Title: Spy Plane (Unarmed Spy flight; park and restore original weapons)
+  Author: 305like
+  Version: 1.10.0
+  Status: running
+  Timestamp: 09/15/2026 01:47:56
+  Hash: 3423a39b7400e599403be1bfc2ed4401
+
+[SM] Listing commands for: Spy Plane
+  [Name]            [Type]   [Help]
+  sm_plane          console      Toggle Spy T pose and airplane attachment
+  sm_planedebug     console      Toggle own plane damage trace visualization
+  sm_planemuzzle    admin        
+  sm_planeprop      admin        
+  sm_spyplane       console      
+  sm_spyplane_chec  admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">14</span><h2>HL2 Ally Follow Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>monster_ally.smx</code> · v0.3</p><p>플레이어를 따라오는 HL2 아군 NPC의 소환·관리 테스트입니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_npcally</code></td><td><code>!npcally</code></td><td>관리자 등록</td><td>Random armed ally; follows you and attacks the opposite team</td></tr><tr><td><code>sm_npcally_test</code></td><td>—</td><td>서버 전용</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_npcallyr</code></td><td><code>!npcallyr</code></td><td>관리자 등록</td><td>Remove your allies</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: monster_ally.smx
+  Title: HL2 Ally Follow Test
+  Author: OpenAI
+  Version: 0.3
+  Status: running
+  Timestamp: 09/16/2026 22:10:02
+  Hash: 1421654eddf9f2bb5511657d1a4114d4
+
+[SM] Listing commands for: HL2 Ally Follow Test
+  [Name]            [Type]   [Help]
+  sm_npcally        admin        Random armed ally; follows you and attacks the opposite team
+  sm_npcally_test   server       
+  sm_npcallyr       admin        Remove your allies
+</pre></details></details></article><article data-type="commands"><header><span class="num">15</span><h2>[TF2] Taunt-tastic 한국어</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf_taunt_tastic.smx</code> · v1.0.3-kr</p><p>병과별 도발 선택 메뉴를 제공합니다.</p>
+<details><summary>명령어 4개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_taunt</code></td><td><code>!taunt</code></td><td>일반 명령 등록</td><td>도발 메뉴를 열거나 번호/이름으로 도발합니다</td></tr><tr><td><code>sm_taunt_cache</code></td><td><code>!taunt_cache</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_taunt_list</code></td><td><code>!taunt_list</code></td><td>일반 명령 등록</td><td>현재 병과의 도발 목록을 콘솔에 표시합니다</td></tr><tr><td><code>sm_taunts</code></td><td><code>!taunts</code></td><td>일반 명령 등록</td><td>현재 병과의 도발 목록을 콘솔에 표시합니다</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf_taunt_tastic.smx
+  Title: [TF2] Taunt-tastic 한국어 (플레이어에게 병과별 도발 메뉴를 제공합니다)
+  Author: Bradasparky, Korean localization by Refirser server
+  Version: 1.0.3-kr
+  URL: https://github.com/Bradasparky/tf_taunt_tastic
+  Status: running
+  Timestamp: 08/25/2026 23:46:02
+  Hash: ea86559830a97980909bbe429aec5578
+
+[SM] Listing commands for: [TF2] Taunt-tastic 한국어
+  [Name]            [Type]   [Help]
+  sm_taunt          console      도발 메뉴를 열거나 번호/이름으로 도발합니다
+  sm_taunt_cache    admin        
+  sm_taunt_list     console      현재 병과의 도발 목록을 콘솔에 표시합니다
+  sm_taunts         console      현재 병과의 도발 목록을 콘솔에 표시합니다
+</pre></details></details></article><article data-type="commands"><header><span class="num">16</span><h2>[TF2] Entity Manager</h2><span class="badge">running</span></header>
+<p class="meta"><code>objectmanager.smx</code> · v1.0</p><p>여러 플러그인이 공유하는 엔티티 목록 관리 기반입니다. 드론 자체를 소환하는 플러그인은 아닙니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_entmanager_dumpentities</code></td><td><code>!entmanager_dumpentities</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: objectmanager.smx
+  Title: [TF2] Entity Manager (Creates a global list of entities which can be accessed and altered by other plugins.)
+  Author: IvoryPal
+  Version: 1.0
+  URL: URL
+  Status: running
+  Timestamp: 09/07/2025 17:26:00
+  Hash: b78b4b51fdd8387fc087638157cff378
+
+[SM] Listing commands for: [TF2] Entity Manager
+  [Name]            [Type]   [Help]
+  sm_entmanager_du  admin        
+</pre></details></details></article><article data-type="auto"><header><span class="num">17</span><h2>Admin File Reader</h2><span class="badge">running</span></header>
+<p class="meta"><code>admin-flatfile.smx</code> · v1.12.0.7239</p><p>파일에 저장된 관리자 권한 설정을 읽는 기반 플러그인입니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: admin-flatfile.smx
+  Title: Admin File Reader (Reads admin files)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: ac63d709b5214553137f6357fe670010
+
+[SM] No commands found for: Admin File Reader
+</pre></details></details></article><article data-type="commands"><header><span class="num">18</span><h2>Basic Votes</h2><span class="badge">running</span></header>
+<p class="meta"><code>basevotes.smx</code> · v1.12.0.7239</p><p>기본 투표 생성·관리 명령입니다.</p>
+<details><summary>명령어 4개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_vote</code></td><td><code>!vote</code></td><td>관리자 등록</td><td>sm_vote &lt;question&gt; [Answer1] [Answer2] ... [Answer5]</td></tr><tr><td><code>sm_voteban</code></td><td><code>!voteban</code></td><td>관리자 등록</td><td>sm_voteban &lt;player&gt; [reason]</td></tr><tr><td><code>sm_votekick</code></td><td><code>!votekick</code></td><td>관리자 등록</td><td>sm_votekick &lt;player&gt; [reason]</td></tr><tr><td><code>sm_votemap</code></td><td><code>!votemap</code></td><td>관리자 등록</td><td>sm_votemap &lt;mapname&gt; [mapname2] ... [mapname5]</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: basevotes.smx
+  Title: Basic Votes (Basic Vote Commands)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: 41dc62d58121509fc9b0644d91fed975
+
+[SM] Listing commands for: Basic Votes
+  [Name]            [Type]   [Help]
+  sm_vote           admin        sm_vote &lt;question&gt; [Answer1] [Answer2] ... [Answer5]
+  sm_voteban        admin        sm_voteban &lt;player&gt; [reason]
+  sm_votekick       admin        sm_votekick &lt;player&gt; [reason]
+  sm_votemap        admin        sm_votemap &lt;mapname&gt; [mapname2] ... [mapname5] 
+</pre></details></details></article><article data-type="commands"><header><span class="num">19</span><h2>Admin Menu</h2><span class="badge">running</span></header>
+<p class="meta"><code>adminmenu.smx</code> · v1.12.0.7239</p><p>관리자 메뉴를 제공합니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_admin</code></td><td><code>!admin</code></td><td>관리자 등록</td><td>Displays the admin menu</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: adminmenu.smx
+  Title: Admin Menu (Administration Menu)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:21
+  Hash: f79174ea6cd7617c53847ab871dc0f23
+
+[SM] Listing commands for: Admin Menu
+  [Name]            [Type]   [Help]
+  sm_admin          admin        Displays the admin menu
+</pre></details></details></article><article data-type="commands"><header><span class="num">20</span><h2>TF2 Mini Games Collection</h2><span class="badge">running</span></header>
+<p class="meta"><code>minigame.smx</code> · v1.1.1-cup-smooth</p><p>무궁화 꽃이 피었습니다, 지뢰찾기, 야바위 미니게임 묶음입니다.</p>
+<details><summary>명령어 6개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_cup</code></td><td><code>!cup</code></td><td>관리자 등록</td><td>야바위 게임 시작</td></tr><tr><td><code>sm_dcup</code></td><td><code>!dcup</code></td><td>관리자 등록</td><td>야바위 게임 종료</td></tr><tr><td><code>sm_dmine</code></td><td><code>!dmine</code></td><td>관리자 등록</td><td>모든 디스펜서 지뢰 제거</td></tr><tr><td><code>sm_end</code></td><td><code>!end</code></td><td>관리자 등록</td><td>게임 종료</td></tr><tr><td><code>sm_game</code></td><td><code>!game</code></td><td>관리자 등록</td><td>게임 시작 (사용법: sm_game [최소초] [최대초] [0.01초확률%])</td></tr><tr><td><code>sm_mine</code></td><td><code>!mine</code></td><td>관리자 등록</td><td>디스펜서 지뢰 게임 생성</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: minigame.smx
+  Title: TF2 Mini Games Collection (무궁화, 지뢰찾기, 야바위 게임 통합)
+  Author: SubAgent System + 305like
+  Version: 1.1.1-cup-smooth
+  Status: running
+  Timestamp: 09/10/2026 05:26:17
+  Hash: 436993a3600a3741e4f584cc95352276
+
+[SM] Listing commands for: TF2 Mini Games Collection
+  [Name]            [Type]   [Help]
+  sm_cup            admin        야바위 게임 시작
+  sm_dcup           admin        야바위 게임 종료
+  sm_dmine          admin        모든 디스펜서 지뢰 제거
+  sm_end            admin        게임 종료
+  sm_game           admin        게임 시작 (사용법: sm_game [최소초] [최대초] [0.01초확률%])
+  sm_mine           admin        디스펜서 지뢰 게임 생성
+</pre></details></details></article><article data-type="auto"><header><span class="num">21</span><h2>[TF2] TF2Attributes</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf2attributes.smx</code> · v1.3.3@nosoop-1.7.1.1</p><p>다른 플러그인이 TF2 플레이어·아이템 속성을 읽고 변경하도록 하는 라이브러리입니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf2attributes.smx
+  Title: [TF2] TF2Attributes (Functions to add/get attributes for TF2 players/items)
+  Author: FlaminSarge
+  Version: 1.3.3@nosoop-1.7.1.1
+  URL: http://forums.alliedmods.net/showthread.php?t=210221
+  Status: running
+  Timestamp: 01/31/2022 15:25:53
+  Hash: ba31fca229aaf2c96d2924461486ccbf
+
+[SM] No commands found for: [TF2] TF2Attributes
+</pre></details></details></article><article data-type="commands"><header><span class="num">22</span><h2>Player Commands</h2><span class="badge">running</span></header>
+<p class="meta"><code>playercommands.smx</code> · v1.12.0.7239</p><p>플레이어 대상의 기본 관리 명령입니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_rename</code></td><td><code>!rename</code></td><td>관리자 등록</td><td>sm_rename &lt;#userid|name&gt;</td></tr><tr><td><code>sm_slap</code></td><td><code>!slap</code></td><td>관리자 등록</td><td>sm_slap &lt;#userid|name&gt; [damage]</td></tr><tr><td><code>sm_slay</code></td><td><code>!slay</code></td><td>관리자 등록</td><td>sm_slay &lt;#userid|name&gt;</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: playercommands.smx
+  Title: Player Commands (Misc. Player Commands)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: 171dd43a48fe9c0b4a9fb0f4f5305f66
+
+[SM] Listing commands for: Player Commands
+  [Name]            [Type]   [Help]
+  sm_rename         admin        sm_rename &lt;#userid|name&gt;
+  sm_slap           admin        sm_slap &lt;#userid|name&gt; [damage]
+  sm_slay           admin        sm_slay &lt;#userid|name&gt;
+</pre></details></details></article><article data-type="commands"><header><span class="num">23</span><h2>Peashooter Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>peashooter_test.smx</code> · v1.1.1</p><p>콩슈터 소환, 발사 속도 조절, 전체 제거 기능입니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_pe</code></td><td><code>!pe</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_pef</code></td><td><code>!pef</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_per</code></td><td><code>!per</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: peashooter_test.smx
+  Title: Peashooter Test (Stationary Peashooter with straight, swept projectiles)
+  Author: 305like
+  Version: 1.1.1
+  Status: running
+  Timestamp: 09/12/2026 19:51:10
+  Hash: ed0bea229f0ff22c77d9a61d3dcbdfd6
+
+[SM] Listing commands for: Peashooter Test
+  [Name]            [Type]   [Help]
+  sm_pe             console      
+  sm_pef            console      
+  sm_per            console      
+</pre></details></details></article><article data-type="commands"><header><span class="num">24</span><h2>CO Signpost</h2><span class="badge">running</span></header>
+<p class="meta"><code>co_signpost.smx</code> · v1.4.0</p><p>양심적 병역 거부자 무기의 개인 데칼을 월드 표지판으로 세웁니다. 설명상 마우스 가운데 버튼을 사용합니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_sign</code></td><td><code>!sign</code></td><td>일반 명령 등록</td><td>sm_sign &lt;1-8&gt; [size 0.2-3.0] - your own signpost count and size. Admins may name a target first.</td></tr><tr><td><code>sm_signmove</code></td><td><code>!signmove</code></td><td>일반 명령 등록</td><td>sm_signmove &lt;-300..300&gt; - raise or lower where your signs sit. Admins may name a target first.</td></tr><tr><td><code>sm_signpost</code></td><td><code>!signpost</code></td><td>일반 명령 등록</td><td>Alias of sm_sign.</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: co_signpost.smx
+  Title: CO Signpost (Plant your Conscientious Objector (with custom decal) as a world sign via mouse3)
+  Author: choh
+  Version: 1.4.0
+  Status: running
+  Timestamp: 08/03/2026 19:21:08
+  Hash: e90d1db9afffc36a089511fcae914880
+
+[SM] Listing commands for: CO Signpost
+  [Name]            [Type]   [Help]
+  sm_sign           console      sm_sign &lt;1-8&gt; [size 0.2-3.0] - your own signpost count and size. Admins may name a target first.
+  sm_signmove       console      sm_signmove &lt;-300..300&gt; - raise or lower where your signs sit. Admins may name a target first.
+  sm_signpost       console      Alias of sm_sign.
+</pre></details></details></article><article data-type="commands"><header><span class="num">25</span><h2>RC Car</h2><span class="badge">running</span></header>
+<p class="meta"><code>rc_car.smx</code> · v1.0.5</p><p>원격 조종 C4 자동차. 충돌 검사와 턱 이동을 포함합니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_rc</code></td><td><code>!rc</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_rc_selftest</code></td><td><code>!rc_selftest</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_rc_status</code></td><td><code>!rc_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: rc_car.smx
+  Title: RC Car (Remote C4 car with swept movement and steps)
+  Author: Refirser
+  Version: 1.0.5
+  Status: running
+  Timestamp: 09/20/2026 19:13:20
+  Hash: b8f87238fa4bb44b17e1751022bb8fb9
+
+[SM] Listing commands for: RC Car
+  [Name]            [Type]   [Help]
+  sm_rc             console      
+  sm_rc_selftest    admin        
+  sm_rc_status      admin        
+</pre></details></details></article><article data-type="auto"><header><span class="num">26</span><h2>Map_Auto_Restart</h2><span class="badge">running</span></header>
+<p class="meta"><code>Map_Auto_Restart.smx</code> · v1.0</p><p>플러그인 로드 후 12시간 주기로, 실제 플레이어가 없을 때 현재 맵을 다시 시작합니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: Map_Auto_Restart.smx
+  Title: Map_Auto_Restart (Restarts the current map every 12 hours since plugin load, but only once the server has no real (non-bot) players connected)
+  Author: 305like
+  Version: 1.0
+  Status: running
+  Timestamp: 07/26/2026 06:23:17
+  Hash: 7e3a3a7efcb970c0494f92306b2b9d62
+
+[SM] No commands found for: Map_Auto_Restart
+</pre></details></details></article><article data-type="commands"><header><span class="num">27</span><h2>Vanilla Shortstop Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>vanilla_shortstop_test.smx</code> · v1.0.0</p><p>변경하지 않은 유격수를 지급해 장전 동작을 비교하는 테스트입니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_shortstop</code></td><td><code>!shortstop</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: vanilla_shortstop_test.smx
+  Title: Vanilla Shortstop Test (Gives an unmodified Shortstop for reload isolation)
+  Author: OpenAI
+  Version: 1.0.0
+  Status: running
+  Timestamp: 08/23/2026 16:50:13
+  Hash: 6d601cb27961b4ffa2e8abbeee9a979a
+
+[SM] Listing commands for: Vanilla Shortstop Test
+  [Name]            [Type]   [Help]
+  sm_shortstop      console      
+</pre></details></details></article><article data-type="commands"><header><span class="num">28</span><h2>Cement Mixer Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>cement_mixer_test.smx</code> · v1.8.2</p><p>Pat와 Mat가 포함된 물리 오브젝트 시멘트 믹서 테스트입니다.</p>
+<details><summary>명령어 7개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_mi</code></td><td><code>!mi</code></td><td>관리자 등록</td><td>Summon a mixer</td></tr><tr><td><code>sm_mif</code></td><td><code>!mif</code></td><td>관리자 등록</td><td>Mixer firing interval: 0.01-100 seconds</td></tr><tr><td><code>sm_mir</code></td><td><code>!mir</code></td><td>관리자 등록</td><td>Remove all your mixers</td></tr><tr><td><code>sm_mit</code></td><td><code>!mit</code></td><td>관리자 등록</td><td>Mixer duration: 0 permanent, or 1-3600 seconds</td></tr><tr><td><code>sm_mixer_check</code></td><td><code>!mixer_check</code></td><td>관리자 등록</td><td>Verify model and sequences</td></tr><tr><td><code>sm_mixer_damage</code></td><td><code>!mixer_damage</code></td><td>관리자 등록</td><td>Mixer damage per hit: 0-10000 (all mixers)</td></tr><tr><td><code>sm_mixer_remove</code></td><td><code>!mixer_remove</code></td><td>관리자 등록</td><td>Remove all your mixers</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: cement_mixer_test.smx
+  Title: Cement Mixer Test (Physics junk mixer with Pat and Mat)
+  Author: OpenAI
+  Version: 1.8.2
+  Status: running
+  Timestamp: 09/12/2026 20:07:59
+  Hash: 61800509409655d8f2c25408c00d7847
+
+[SM] Listing commands for: Cement Mixer Test
+  [Name]            [Type]   [Help]
+  sm_mi             admin        Summon a mixer
+  sm_mif            admin        Mixer firing interval: 0.01-100 seconds
+  sm_mir            admin        Remove all your mixers
+  sm_mit            admin        Mixer duration: 0 permanent, or 1-3600 seconds
+  sm_mixer_check    admin        Verify model and sequences
+  sm_mixer_damage   admin        Mixer damage per hit: 0-10000 (all mixers)
+  sm_mixer_remove   admin        Remove all your mixers
+</pre></details></details></article><article data-type="commands"><header><span class="num">29</span><h2>Admin Help</h2><span class="badge">running</span></header>
+<p class="meta"><code>adminhelp.smx</code> · v1.12.0.7239</p><p>등록 명령과 도움말을 조회합니다.</p>
+<details><summary>명령어 2개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_help</code></td><td><code>!help</code></td><td>일반 명령 등록</td><td>Displays SourceMod commands and descriptions</td></tr><tr><td><code>sm_searchcmd</code></td><td><code>!searchcmd</code></td><td>일반 명령 등록</td><td>Searches SourceMod commands</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: adminhelp.smx
+  Title: Admin Help (Display command information)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: ec58e3da05a2436494775a5839bfc1a5
+
+[SM] Listing commands for: Admin Help
+  [Name]            [Type]   [Help]
+  sm_help           console      Displays SourceMod commands and descriptions
+  sm_searchcmd      console      Searches SourceMod commands
+</pre></details></details></article><article data-type="commands"><header><span class="num">30</span><h2>Pet Follower</h2><span class="badge">running</span></header>
+<p class="meta"><code>pet_follower.smx</code> · v1.4.5</p><p>플레이어를 따라오는 펫. 메타데이터에는 햇 키드, 물개, 치유 드론, R-Cat, 검은 고양이가 기재되어 있습니다.</p>
+<details><summary>명령어 9개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_pet</code></td><td><code>!pet</code></td><td>일반 명령 등록</td><td>Toggle your pet on or off</td></tr><tr><td><code>sm_pet2</code></td><td><code>!pet2</code></td><td>일반 명령 등록</td><td>Toggle your seal pet on or off</td></tr><tr><td><code>sm_pet3</code></td><td><code>!pet3</code></td><td>일반 명령 등록</td><td>Toggle your healing drone pet on or off</td></tr><tr><td><code>sm_pet3_check</code></td><td><code>!pet3_check</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_pet3_status</code></td><td><code>!pet3_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_pet4</code></td><td><code>!pet4</code></td><td>일반 명령 등록</td><td>Toggle your Level 1 R-Cat combat pet</td></tr><tr><td><code>sm_pet4_status</code></td><td><code>!pet4_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_pet5</code></td><td><code>!pet5</code></td><td>일반 명령 등록</td><td>Toggle your spinning black cat support pet</td></tr><tr><td><code>sm_pet5_status</code></td><td><code>!pet5_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: pet_follower.smx
+  Title: Pet Follower (Hat Kid, seal, healing drone, R-Cat and black cat: !pet through !pet5)
+  Author: 305like
+  Version: 1.4.5
+  URL: https://github.com/305like/server-default-plugin
+  Status: running
+  Timestamp: 09/20/2026 00:50:15
+  Hash: 8216a62cd5245715dbb76b6a6df13175
+
+[SM] Listing commands for: Pet Follower
+  [Name]            [Type]   [Help]
+  sm_pet            console      Toggle your pet on or off
+  sm_pet2           console      Toggle your seal pet on or off
+  sm_pet3           console      Toggle your healing drone pet on or off
+  sm_pet3_check     admin        
+  sm_pet3_status    admin        
+  sm_pet4           console      Toggle your Level 1 R-Cat combat pet
+  sm_pet4_status    admin        
+  sm_pet5           console      Toggle your spinning black cat support pet
+  sm_pet5_status    admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">31</span><h2>Basic Info Triggers</h2><span class="badge">running</span></header>
+<p class="meta"><code>basetriggers.smx</code> · v1.12.0.7239</p><p>남은 시간, 현재 시간, 다음 맵 등 기본 서버 정보 트리거입니다.</p>
+<details><summary>명령어 4개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>ff</code></td><td>—</td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>motd</code></td><td>—</td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>nextmap</code></td><td>—</td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>timeleft</code></td><td>—</td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: basetriggers.smx
+  Title: Basic Info Triggers (Adds ff, timeleft, thetime, and others.)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: 919d6b909f92bde9e10d294fedf341b4
+
+[SM] Listing commands for: Basic Info Triggers
+  [Name]            [Type]   [Help]
+  ff                console      
+  motd              console      
+  nextmap           console      
+  timeleft          console      
+</pre></details></details></article><article data-type="commands"><header><span class="num">32</span><h2>Chaos Slow Motion</h2><span class="badge">running</span></header>
+<p class="meta"><code>chaos_slow_motion.smx</code> · v1.5.0</p><p>독립형 슬로모션 효과입니다.</p>
+<details><summary>명령어 2개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>timescale</code></td><td>—</td><td>관리자 등록</td><td>사용법: timescale &lt;0.01~50.0&gt;</td></tr><tr><td><code>timescale_reset</code></td><td>—</td><td>관리자 등록</td><td>시간 배율을 1배속으로 복구합니다.</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: chaos_slow_motion.smx
+  Title: Chaos Slow Motion (Standalone ChaosModTF2 slow-motion effect)
+  Author: Mikusch / 305like
+  Version: 1.5.0
+  Status: running
+  Timestamp: 09/09/2026 03:14:01
+  Hash: 22ceba4b9eb8790f1d4dcf2df8c205e7
+
+[SM] Listing commands for: Chaos Slow Motion
+  [Name]            [Type]   [Help]
+  timescale         admin        사용법: timescale &lt;0.01~50.0&gt;
+  timescale_reset   admin        시간 배율을 1배속으로 복구합니다.
+</pre></details></details></article><article data-type="commands"><header><span class="num">33</span><h2>[TF2] Custom Attribute Manager</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf_custom_attributes_manager.smx</code> · v1.0.0</p><p>설정 파일 기반 커스텀 속성 관리입니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>tf2custattrman_reload</code></td><td>—</td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf_custom_attributes_manager.smx
+  Title: [TF2] Custom Attribute Manager (Exposes a configuration file for custom attributes.)
+  Author: nosoop
+  Version: 1.0.0
+  URL: localhost
+  Status: running
+  Timestamp: 03/07/2021 10:18:35
+  Hash: 941481eaaffed020df909ca9ab2f6396
+
+[SM] Listing commands for: [TF2] Custom Attribute Manager
+  [Name]            [Type]   [Help]
+  tf2custattrman_r  admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">34</span><h2>Spy Plane Independent Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>spy_plane_drone_test.smx</code> · v0.6.9</p><p>무기·폭탄 및 비무장 조종사를 사용하는 독립 비행기 테스트입니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_plane2</code></td><td><code>!plane2</code></td><td>일반 명령 등록</td><td>Toggle independent Spy aircraft</td></tr><tr><td><code>sm_plane2_check</code></td><td><code>!plane2_check</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_plane2debug</code></td><td><code>!plane2debug</code></td><td>일반 명령 등록</td><td>Toggle own damage trace visualization</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: spy_plane_drone_test.smx
+  Title: Spy Plane Independent Test (Independent physics aircraft with plane1 weapons, bombs and unarmed pilot)
+  Author: 305like
+  Version: 0.6.9
+  Status: running
+  Timestamp: 09/15/2026 23:43:38
+  Hash: 2b1bb3e81ff613ab90ad1152b157834a
+
+[SM] Listing commands for: Spy Plane Independent Test
+  [Name]            [Type]   [Help]
+  sm_plane2         console      Toggle independent Spy aircraft
+  sm_plane2_check   admin        
+  sm_plane2debug    console      Toggle own damage trace visualization
+</pre></details></details></article><article data-type="auto"><header><span class="num">35</span><h2>Dynamic MotD Replacer</h2><span class="badge">running</span></header>
+<p class="meta"><code>dynamic_motd.smx</code> · v3.0.0</p><p>서버 안내 화면(MOTD)의 URL을 동적으로 구성합니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: dynamic_motd.smx
+  Title: Dynamic MotD Replacer (Allows dynamicly generated MotD urls)
+  Author: psychonic
+  Version: 3.0.0
+  URL: https://scamm.in/
+  Status: running
+  Timestamp: 01/27/2026 05:36:06
+  Hash: 18fc4c4566d242d0ffb34da97b4a9fd8
+
+[SM] No commands found for: Dynamic MotD Replacer
+</pre></details></details></article><article data-type="auto"><header><span class="num">36</span><h2>[TF2] Attribute: Viewmodel Override</h2><span class="badge">running</span></header>
+<p class="meta"><code>attribute_viewmodel_override.smx</code> · v2.0.7</p><p>속성에 따라 팔, 팔 애니메이션, 1·3인칭 무기 모델을 변경합니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: attribute_viewmodel_override.smx
+  Title: [TF2] Attribute: Viewmodel Override ([TF2] Attributes to modify arms, arms animations, firstperson and thirdparson weapon model.)
+  Author: tsuza
+  Version: 2.0.7
+  URL: https://github.com/tsuza/TF2CA-weaponmodel_override
+  Status: running
+  Timestamp: 08/30/2026 02:53:58
+  Hash: a119a0d68d021999663bbc94fd0a3f66
+
+[SM] No commands found for: [TF2] Attribute: Viewmodel Override
+</pre></details></details></article><article data-type="commands"><header><span class="num">37</span><h2>Set Health</h2><span class="badge">running</span></header>
+<p class="meta"><code>sm_hp.smx</code> · v1.2.2</p><p>플레이어나 팀의 체력을 지정합니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_hp</code></td><td><code>!hp</code></td><td>관리자 등록</td><td>sm_hp &lt;#userid|name&gt; &lt;amount&gt;</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: sm_hp.smx
+  Title: Set Health (Sets a player or teams health to the specified amount.)
+  Author: Mr. Blip
+  Version: 1.2.2
+  Status: running
+  Timestamp: 08/04/2023 22:14:48
+  Hash: 2f98540c55c47b8382f0134defcd4d30
+
+[SM] Listing commands for: Set Health
+  [Name]            [Type]   [Help]
+  sm_hp             admin        sm_hp &lt;#userid|name&gt; &lt;amount&gt;
+</pre></details></details></article><article data-type="commands"><header><span class="num">38</span><h2>VIP Mobster Boss</h2><span class="badge">running</span></header>
+<p class="meta"><code>vip_mobster_boss.smx</code> · v2.0.53-juggernaut</p><p>FF2/RPG용 Mobster VIP 보스 기능입니다. 독립 FF2 본체 플러그인과는 별도입니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_boss</code></td><td><code>!boss</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_juggernaut_test</code></td><td><code>!juggernaut_test</code></td><td>관리자 등록</td><td>Grant Juggernaut to a RED userid for testing</td></tr><tr><td><code>sm_vipsettings</code></td><td><code>!vipsettings</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: vip_mobster_boss.smx
+  Title: VIP Mobster Boss (Native SourceMod Mobster VIP for FF2/RPG)
+  Author: OpenAI
+  Version: 2.0.53-juggernaut
+  Status: running
+  Timestamp: 09/16/2026 13:52:20
+  Hash: 9f02901b853be1bb04a3f3213e325486
+
+[SM] Listing commands for: VIP Mobster Boss
+  [Name]            [Type]   [Help]
+  sm_boss           admin        
+  sm_juggernaut_te  admin        Grant Juggernaut to a RED userid for testing
+  sm_vipsettings    console      
+</pre></details></details></article><article data-type="commands"><header><span class="num">39</span><h2>Ginbbai Loadout</h2><span class="badge">running</span></header>
+<p class="meta"><code>ginbbai_loadout.smx</code> · v1.0.3</p><p>상대 동의를 기반으로 저장된 TF2 무장을 일시적으로 복사합니다.</p>
+<details><summary>명령어 4개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_ginbbai</code></td><td><code>!ginbbai</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_ginbbai_probe</code></td><td><code>!ginbbai_probe</code></td><td>관리자 등록</td><td>Read-only saved/current inventory inspection: &lt;target&gt;</td></tr><tr><td><code>sm_ginbbai_reset</code></td><td><code>!ginbbai_reset</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_ginbbai_selftest</code></td><td><code>!ginbbai_selftest</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: ginbbai_loadout.smx
+  Title: Ginbbai Loadout (Consent-based temporary copies of saved TF2 loadouts)
+  Author: 305like
+  Version: 1.0.3
+  Status: running
+  Timestamp: 09/13/2026 22:20:00
+  Hash: 96b7089b8d3116627d9c5f39bab8f9d6
+
+[SM] Listing commands for: Ginbbai Loadout
+  [Name]            [Type]   [Help]
+  sm_ginbbai        console      
+  sm_ginbbai_probe  admin        Read-only saved/current inventory inspection: &lt;target&gt;
+  sm_ginbbai_reset  console      
+  sm_ginbbai_selft  admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">40</span><h2>Fun Votes</h2><span class="badge">running</span></header>
+<p class="meta"><code>funvotes.smx</code> · v1.12.0.7239</p><p>게임 효과와 관련된 추가 투표 명령입니다.</p>
+<details><summary>명령어 5개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_votealltalk</code></td><td><code>!votealltalk</code></td><td>관리자 등록</td><td>sm_votealltalk</td></tr><tr><td><code>sm_voteburn</code></td><td><code>!voteburn</code></td><td>관리자 등록</td><td>sm_voteburn &lt;player&gt;</td></tr><tr><td><code>sm_voteff</code></td><td><code>!voteff</code></td><td>관리자 등록</td><td>sm_voteff</td></tr><tr><td><code>sm_votegravity</code></td><td><code>!votegravity</code></td><td>관리자 등록</td><td>sm_votegravity &lt;amount&gt; [amount2] ... [amount5]</td></tr><tr><td><code>sm_voteslay</code></td><td><code>!voteslay</code></td><td>관리자 등록</td><td>sm_voteslay &lt;player&gt;</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: funvotes.smx
+  Title: Fun Votes (Fun Vote Commands)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: 0d65a5db60d251d214ad986e3f3a06cd
+
+[SM] Listing commands for: Fun Votes
+  [Name]            [Type]   [Help]
+  sm_votealltalk    admin        sm_votealltalk
+  sm_voteburn       admin        sm_voteburn &lt;player&gt;
+  sm_voteff         admin        sm_voteff
+  sm_votegravity    admin        sm_votegravity &lt;amount&gt; [amount2] ... [amount5]
+  sm_voteslay       admin        sm_voteslay &lt;player&gt;
+</pre></details></details></article><article data-type="commands"><header><span class="num">41</span><h2>Sound Commands</h2><span class="badge">running</span></header>
+<p class="meta"><code>sounds.smx</code> · v1.12.0.7239</p><p>관리자 사운드 재생 명령입니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_play</code></td><td><code>!play</code></td><td>관리자 등록</td><td>sm_play &lt;#userid|name&gt; &lt;filename&gt;</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: sounds.smx
+  Title: Sound Commands (Sound Commands)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: 4f60f613569cf3f983d777b6de814f51
+
+[SM] Listing commands for: Sound Commands
+  [Name]            [Type]   [Help]
+  sm_play           admin        sm_play &lt;#userid|name&gt; &lt;filename&gt;
+</pre></details></details></article><article data-type="auto"><header><span class="num">42</span><h2>S-Downloader</h2><span class="badge">running</span></header>
+<p class="meta"><code>S_Downloader.smx</code> · v1.1.2.22 - Dev</p><p>파일을 클라이언트 다운로드 목록에 등록하고 미리 로드합니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: S_Downloader.smx
+  Title: S-Downloader (Add files to download table, and precache them automatically.)
+  Author: Starbish
+  Version: 1.1.2.22 - Dev
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 09/12/2015 00:48:23
+  Hash: a25a053e02f757e84489863d4f6a87c5
+
+[SM] No commands found for: S-Downloader
+</pre></details></details></article><article data-type="commands"><header><span class="num">43</span><h2>CWX Native Weapon Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>ak_native_test.smx</code> · v0.3.43-slots</p><p>네이티브 예측을 사용하는 커스텀 총기 테스트. 메타데이터상 34개 무기, 전용 소리 및 보조 발사를 포함합니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_cwx</code></td><td><code>!cwx</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_cwx_bot_test</code></td><td><code>!cwx_bot_test</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_cwx_selftest</code></td><td><code>!cwx_selftest</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: ak_native_test.smx
+  Title: CWX Native Weapon Test (34 native-predicted weapons with custom audio and alt-fire)
+  Author: 305like / OpenAI
+  Version: 0.3.43-slots
+  Status: running
+  Timestamp: 09/16/2026 20:49:38
+  Hash: a68aa420998f022d1a1b95f3ed9a0938
+
+[SM] Listing commands for: CWX Native Weapon Test
+  [Name]            [Type]   [Help]
+  sm_cwx            console      
+  sm_cwx_bot_test   admin        
+  sm_cwx_selftest   admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">44</span><h2>Basic Commands</h2><span class="badge">running</span></header>
+<p class="meta"><code>basecommands.smx</code> · v1.12.0.7239</p><p>킥, 맵 변경, 서버 명령 실행 등 기본 관리자 명령입니다.</p>
+<details><summary>명령어 10개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_cancelvote</code></td><td><code>!cancelvote</code></td><td>관리자 등록</td><td>sm_cancelvote</td></tr><tr><td><code>sm_cvar</code></td><td><code>!cvar</code></td><td>관리자 등록</td><td>sm_cvar &lt;cvar&gt; [value]</td></tr><tr><td><code>sm_execcfg</code></td><td><code>!execcfg</code></td><td>관리자 등록</td><td>sm_execcfg &lt;filename&gt;</td></tr><tr><td><code>sm_kick</code></td><td><code>!kick</code></td><td>관리자 등록</td><td>sm_kick &lt;#userid|name&gt; [reason]</td></tr><tr><td><code>sm_map</code></td><td><code>!map</code></td><td>관리자 등록</td><td>sm_map &lt;map&gt;</td></tr><tr><td><code>sm_rcon</code></td><td><code>!rcon</code></td><td>관리자 등록</td><td>sm_rcon &lt;args&gt;</td></tr><tr><td><code>sm_reloadadmins</code></td><td><code>!reloadadmins</code></td><td>관리자 등록</td><td>sm_reloadadmins</td></tr><tr><td><code>sm_resetcvar</code></td><td><code>!resetcvar</code></td><td>관리자 등록</td><td>sm_resetcvar &lt;cvar&gt;</td></tr><tr><td><code>sm_revote</code></td><td><code>!revote</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_who</code></td><td><code>!who</code></td><td>관리자 등록</td><td>sm_who [#userid|name]</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: basecommands.smx
+  Title: Basic Commands (Basic Admin Commands)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: f3633a2b08822feae74faa34235a3be0
+
+[SM] Listing commands for: Basic Commands
+  [Name]            [Type]   [Help]
+  sm_cancelvote     admin        sm_cancelvote
+  sm_cvar           admin        sm_cvar &lt;cvar&gt; [value]
+  sm_execcfg        admin        sm_execcfg &lt;filename&gt;
+  sm_kick           admin        sm_kick &lt;#userid|name&gt; [reason]
+  sm_map            admin        sm_map &lt;map&gt;
+  sm_rcon           admin        sm_rcon &lt;args&gt;
+  sm_reloadadmins   admin        sm_reloadadmins
+  sm_resetcvar      admin        sm_resetcvar &lt;cvar&gt;
+  sm_revote         console      
+  sm_who            admin        sm_who [#userid|name]
+</pre></details></details></article><article data-type="auto"><header><span class="num">45</span><h2>Reserved Slots</h2><span class="badge">running</span></header>
+<p class="meta"><code>reservedslots.smx</code> · v1.12.0.7239</p><p>예약 접속 슬롯을 관리합니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: reservedslots.smx
+  Title: Reserved Slots (Provides basic reserved slots)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:21
+  Hash: cc86982fb24c861b1ac030a4fdf65531
+
+[SM] No commands found for: Reserved Slots
+</pre></details></details></article><article data-type="commands"><header><span class="num">46</span><h2>[TF2] Custom Weapons X - Equip Commands</h2><span class="badge">running</span></header>
+<p class="meta"><code>cwx_equip_commands.smx</code> · v1.1.0</p><p>관리자가 CWX에 정의된 아이템을 강제로 장착시키는 명령입니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_cwx_equip</code></td><td><code>!cwx_equip</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_cwx_equip_target</code></td><td><code>!cwx_equip_target</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_cwx_set_loadout</code></td><td><code>!cwx_set_loadout</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: cwx_equip_commands.smx
+  Title: [TF2] Custom Weapons X - Equip Commands (Provides admin-level commands to force equip defined items.)
+  Author: nosoop
+  Version: 1.1.0
+  URL: https://github.com/nosoop/SM-TFCustomWeaponsX
+  Status: running
+  Timestamp: 12/14/2025 08:53:18
+  Hash: e956e603592fee5389d5b6167524f0bb
+
+[SM] Listing commands for: [TF2] Custom Weapons X - Equip Commands
+  [Name]            [Type]   [Help]
+  sm_cwx_equip      admin        
+  sm_cwx_equip_tar  admin        
+  sm_cwx_set_loado  admin        
+</pre></details></details></article><article data-type="auto"><header><span class="num">47</span><h2>Source Scramble Manager</h2><span class="badge">running</span></header>
+<p class="meta"><code>sourcescramble_manager.smx</code> · v1.2.0</p><p>설정 파일에 정의된 단순 어셈블리 패치를 적용하는 기반 플러그인입니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: sourcescramble_manager.smx
+  Title: Source Scramble Manager (Helper plugin to load simple assembly patches from a configuration file.)
+  Author: nosoop
+  Version: 1.2.0
+  URL: https://github.com/nosoop/SMExt-SourceScramble
+  Status: running
+  Timestamp: 04/28/2025 11:20:04
+  Hash: 10502f4b3806a53bd8992adecb3f5006
+
+[SM] No commands found for: Source Scramble Manager
+</pre></details></details></article><article data-type="commands"><header><span class="num">48</span><h2>Grappling Hook</h2><span class="badge">running</span></header>
+<p class="meta"><code>grappling_hook.smx</code> · v2.0.0</p><p>플레이어에게 Mannpower 갈고리를 지급·관리합니다.</p>
+<details><summary>명령어 4개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_grapple</code></td><td><code>!grapple</code></td><td>관리자 등록</td><td>Give a player the grappling hook: sm_grapple &lt;target&gt;</td></tr><tr><td><code>sm_grapplecvars</code></td><td><code>!grapplecvars</code></td><td>관리자 등록</td><td>Show the grappling hook tuning convars and their values.</td></tr><tr><td><code>sm_grapplelist</code></td><td><code>!grapplelist</code></td><td>관리자 등록</td><td>List who currently has the grappling hook.</td></tr><tr><td><code>sm_ungrapple</code></td><td><code>!ungrapple</code></td><td>관리자 등록</td><td>Take the grappling hook away: sm_ungrapple &lt;target&gt;</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: grappling_hook.smx
+  Title: Grappling Hook (Give TF2&#x27;s Mannpower grappling hook to individual players)
+  Author: 305like
+  Version: 2.0.0
+  URL: https://github.com/305like/server-default-plugin
+  Status: running
+  Timestamp: 08/08/2026 21:53:43
+  Hash: f3e4172d83d665ee304c9bd45bdad224
+
+[SM] Listing commands for: Grappling Hook
+  [Name]            [Type]   [Help]
+  sm_grapple        admin        Give a player the grappling hook: sm_grapple &lt;target&gt;
+  sm_grapplecvars   admin        Show the grappling hook tuning convars and their values.
+  sm_grapplelist    admin        List who currently has the grappling hook.
+  sm_ungrapple      admin        Take the grappling hook away: sm_ungrapple &lt;target&gt;
+</pre></details></details></article><article data-type="auto"><header><span class="num">49</span><h2>[TF2] Econ Dynamic Compatibility Shim</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf_econ_dynamic_compat.smx</code> · v1.0.0</p><p>다른 플러그인에서 지정한 아이템 속성을 연결하는 호환성 계층입니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf_econ_dynamic_compat.smx
+  Title: [TF2] Econ Dynamic Compatibility Shim (Compatibility shim to install attributes specified by other plugins)
+  Author: nosoop
+  Version: 1.0.0
+  URL: https://github.com/nosoop/SMExt-TFEconDynamic
+  Status: running
+  Timestamp: 12/09/2025 10:27:55
+  Hash: f317c9a924e23f63b28629c422c33b13
+
+[SM] No commands found for: [TF2] Econ Dynamic Compatibility Shim
+</pre></details></details></article><article data-type="commands"><header><span class="num">50</span><h2>Fun Remove Player</h2><span class="badge">running</span></header>
+<p class="meta"><code>fun_remove.smx</code> · v1.0</p><p>플레이어 엔티티를 제거하는 관리 기능입니다. 사용 시 주의가 필요합니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_remove</code></td><td><code>!remove</code></td><td>관리자 등록</td><td>sm_remove &lt;target&gt; - 플레이어 엔티티 소멸</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: fun_remove.smx
+  Title: Fun Remove Player (플레이어 엔티티 소멸)
+  Author: 305like
+  Version: 1.0
+  Status: running
+  Timestamp: 03/22/2026 22:09:35
+  Hash: 93a773e9add8ecc60f123e6658e673f2
+
+[SM] Listing commands for: Fun Remove Player
+  [Name]            [Type]   [Help]
+  sm_remove         admin        sm_remove &lt;target&gt; - 플레이어 엔티티 소멸
+</pre></details></details></article><article data-type="commands"><header><span class="num">51</span><h2>HL2 NPC smoke test</h2><span class="badge">running</span></header>
+<p class="meta"><code>monster_smoke.smx</code> · v0.17</p><p>HL2 NPC 소환 메뉴와 제거·진단 기능입니다. 실제 NPC 구현에는 Monster 확장자가 필요합니다.</p>
+<details><summary>명령어 4개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_hl2npc</code></td><td><code>!hl2npc</code></td><td>관리자 등록</td><td>sm_hl2npc &lt;npc classname&gt;; no argument lists supported variants</td></tr><tr><td><code>sm_monster_smoke</code></td><td>—</td><td>서버 전용</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_npc</code></td><td><code>!npc</code></td><td>관리자 등록</td><td>Open the HL2 NPC spawn menu</td></tr><tr><td><code>sm_npcr</code></td><td><code>!npcr</code></td><td>관리자 등록</td><td>Remove all supported HL2 NPCs</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: monster_smoke.smx
+  Title: HL2 NPC smoke test
+  Author: OpenAI
+  Version: 0.17
+  Status: running
+  Timestamp: 09/16/2026 06:32:44
+  Hash: ed95adcf373a2fd60b7289920c44f88c
+
+[SM] Listing commands for: HL2 NPC smoke test
+  [Name]            [Type]   [Help]
+  sm_hl2npc         admin        sm_hl2npc &lt;npc classname&gt;; no argument lists supported variants
+  sm_monster_smoke  server       
+  sm_npc            admin        Open the HL2 NPC spawn menu
+  sm_npcr           admin        Remove all supported HL2 NPCs
+</pre></details></details></article><article data-type="commands"><header><span class="num">52</span><h2>RED Team Original Skills Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>red_team_skills_test.smx</code> · v2.0.2</p><p>RPG 레드팀 스킬 테스트. 스카웃 CWX 권총과 관리자 레벨 1~5 설정 어댑터를 포함합니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_redskill_status</code></td><td><code>!redskill_status</code></td><td>관리자 등록</td><td>Show original skill runtime status</td></tr><tr><td><code>sm_skilllevel</code></td><td><code>!skilllevel</code></td><td>관리자 등록</td><td>sm_skilllevel &lt;1-5&gt; [target]</td></tr><tr><td><code>sm_스킬레벨</code></td><td><code>!스킬레벨</code></td><td>관리자 등록</td><td>sm_스킬레벨 &lt;1-5&gt; [대상]</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: red_team_skills_test.smx
+  Title: RED Team Original Skills Test (RPG RED skills; Hale CWX Scout pistols; admin level 1-5 adapter)
+  Author: 305like / OpenAI
+  Version: 2.0.2
+  Status: running
+  Timestamp: 09/19/2026 16:39:04
+  Hash: 36059488961b3487125a8f0a7b17e5fa
+
+[SM] Listing commands for: RED Team Original Skills Test
+  [Name]            [Type]   [Help]
+  sm_redskill_stat  admin        Show original skill runtime status
+  sm_skilllevel     admin        sm_skilllevel &lt;1-5&gt; [target]
+  sm_스킬레벨   admin        sm_스킬레벨 &lt;1-5&gt; [대상]
+</pre></details></details></article><article data-type="commands"><header><span class="num">53</span><h2>Character Spin</h2><span class="badge">running</span></header>
+<p class="meta"><code>character_spin.smx</code> · v1.2.2</p><p>플레이어 모델의 XYZ 회전 및 고정 각도를 설정합니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_angle</code></td><td><code>!angle</code></td><td>일반 명령 등록</td><td>Fixed XYZ angle menu | angle off</td></tr><tr><td><code>sm_spin</code></td><td><code>!spin</code></td><td>일반 명령 등록</td><td>spin [x/y/z/xyz] [degrees/server-frame] | spin X Y Z | spin speed 0.01..720 | spin off</td></tr><tr><td><code>sm_spin_check</code></td><td><code>!spin_check</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: character_spin.smx
+  Title: Character Spin (XYZ character spin and fixed-angle menu)
+  Author: 305like
+  Version: 1.2.2
+  Status: running
+  Timestamp: 09/15/2026 01:23:53
+  Hash: 7c9c3094cdb80fff0c8410d8bc655442
+
+[SM] Listing commands for: Character Spin
+  [Name]            [Type]   [Help]
+  sm_angle          console      Fixed XYZ angle menu | angle off
+  sm_spin           console      spin [x/y/z/xyz] [degrees/server-frame] | spin X Y Z | spin speed 0.01..720 | spin off
+  sm_spin_check     admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">54</span><h2>Donor Chat Customizer</h2><span class="badge">running</span></header>
+<p class="meta"><code>donor_chat_customizer.smx</code> · v1.2.1</p><p>이용권 기반 후원자 태그·이름 색상 설정과 저장 기능입니다.</p>
+<details><summary>명령어 5개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_donorchat_selftest</code></td><td><code>!donorchat_selftest</code></td><td>관리자 등록</td><td>Check formatting and isolated persistence</td></tr><tr><td><code>sm_vip</code></td><td><code>!vip</code></td><td>일반 명령 등록</td><td>VIP 티켓 / 본인 채팅 설정 메뉴</td></tr><tr><td><code>sm_vipnamecolorticket</code></td><td><code>!vipnamecolorticket</code></td><td>관리자 등록</td><td>&lt;대상&gt; [개수] 이름 색상 변경권 지급</td></tr><tr><td><code>sm_viptagcolorticket</code></td><td><code>!viptagcolorticket</code></td><td>관리자 등록</td><td>&lt;대상&gt; [개수] 네임태그 색상 변경권 지급</td></tr><tr><td><code>sm_viptagticket</code></td><td><code>!viptagticket</code></td><td>관리자 등록</td><td>&lt;대상&gt; [개수] 네임태그 변경권 지급</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: donor_chat_customizer.smx
+  Title: Donor Chat Customizer (Ticket-based donor tag and name colors; persistent SteamID settings)
+  Author: 305like
+  Version: 1.2.1
+  Status: running
+  Timestamp: 09/13/2026 20:17:15
+  Hash: 27973c53147c3f835acd74b5e0dc413b
+
+[SM] Listing commands for: Donor Chat Customizer
+  [Name]            [Type]   [Help]
+  sm_donorchat_sel  admin        Check formatting and isolated persistence
+  sm_vip            console      VIP 티켓 / 본인 채팅 설정 메뉴
+  sm_vipnamecolort  admin        &lt;대상&gt; [개수] 이름 색상 변경권 지급
+  sm_viptagcolorti  admin        &lt;대상&gt; [개수] 네임태그 색상 변경권 지급
+  sm_viptagticket   admin        &lt;대상&gt; [개수] 네임태그 변경권 지급
+</pre></details></details></article><article data-type="commands"><header><span class="num">55</span><h2>[TF2] Custom Weapons X</h2><span class="badge">running</span></header>
+<p class="meta"><code>cwx.smx</code> · vX.0.10</p><p>Custom Weapons X 커스텀 무기 기반 플러그인입니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_cwx_export</code></td><td><code>!cwx_export</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: cwx.smx
+  Title: [TF2] Custom Weapons X (Allows server operators to design their own weapons.)
+  Author: nosoop
+  Version: X.0.10
+  URL: https://github.com/nosoop/SM-TFCustomWeaponsX
+  Status: running
+  Timestamp: 05/10/2026 07:39:57
+  Hash: 003552dbcb201bd5594c901f1c030f88
+
+[SM] Listing commands for: [TF2] Custom Weapons X
+  [Name]            [Type]   [Help]
+  sm_cwx_export     admin        
+</pre></details></details></article><article data-type="auto"><header><span class="num">56</span><h2>cwx/viewmodel_override.smx</h2><span class="badge">running</span></header>
+<p class="meta"><code>cwx/viewmodel_override.smx</code> · v미표기</p><p>CWX 하위 뷰모델 교체 모듈로 보입니다. 메타데이터가 없어 파일명 기반 설명입니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: cwx/viewmodel_override.smx
+  Status: running
+  Timestamp: 05/14/2026 01:07:25
+  Hash: bb9f71a2398e51554f19f03dbd357838
+
+[SM] No commands found for: cwx/viewmodel_override.smx
+</pre></details></details></article><article data-type="commands"><header><span class="num">57</span><h2>Map Position Tool</h2><span class="badge">running</span></header>
+<p class="meta"><code>map_position_tool.smx</code> · v1.0.0</p><p>권총을 이용한 위치 표식과 두 꼭짓점 영역 선택 도구입니다.</p>
+<details><summary>명령어 6개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_pos1</code></td><td><code>!pos1</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_pos2</code></td><td><code>!pos2</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_poscheck</code></td><td><code>!poscheck</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_posclear</code></td><td><code>!posclear</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_posgun</code></td><td><code>!posgun</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_posundo</code></td><td><code>!posundo</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: map_position_tool.smx
+  Title: Map Position Tool (Pistol point markers and two-corner region selection)
+  Author: 305like / OpenAI
+  Version: 1.0.0
+  Status: running
+  Timestamp: 09/10/2026 03:25:42
+  Hash: 6207608eaffcd3f966683e923ef9570c
+
+[SM] Listing commands for: Map Position Tool
+  [Name]            [Type]   [Help]
+  sm_pos1           admin        
+  sm_pos2           admin        
+  sm_poscheck       admin        
+  sm_posclear       admin        
+  sm_posgun         admin        
+  sm_posundo        admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">58</span><h2>HD2 Success Overlay</h2><span class="badge">running</span></header>
+<p class="meta"><code>hd2_success_overlay.smx</code> · v1.9.1</p><p>헬다이버즈 2 목표 완료 화면 오버레이. 메타데이터상 일반 유저용입니다.</p>
+<details><summary>명령어 2개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_hd2_alpha</code></td><td><code>!hd2_alpha</code></td><td>관리자 등록</td><td>Show one HD2 alpha material (0-30)</td></tr><tr><td><code>sm_success</code></td><td><code>!success</code></td><td>일반 명령 등록</td><td>Show the HD2 success overlay</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: hd2_success_overlay.smx
+  Title: HD2 Success Overlay (Public Helldivers 2 objective-complete overlay)
+  Author: OpenAI
+  Version: 1.9.1
+  Status: running
+  Timestamp: 08/29/2026 10:53:33
+  Hash: 47f6cab0081d4f33c4d6234358abb219
+
+[SM] Listing commands for: HD2 Success Overlay
+  [Name]            [Type]   [Help]
+  sm_hd2_alpha      admin        Show one HD2 alpha material (0-30)
+  sm_success        console      Show the HD2 success overlay
+</pre></details></details></article><article data-type="commands"><header><span class="num">59</span><h2>Basic Comm Control</h2><span class="badge">running</span></header>
+<p class="meta"><code>basecomm.smx</code> · v1.12.0.7239</p><p>음성·채팅 제한 및 해제 등 의사소통 권한 관리입니다.</p>
+<details><summary>명령어 6개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_gag</code></td><td><code>!gag</code></td><td>관리자 등록</td><td>sm_gag &lt;player&gt; - Removes a player&#x27;s ability to use chat.</td></tr><tr><td><code>sm_mute</code></td><td><code>!mute</code></td><td>관리자 등록</td><td>sm_mute &lt;player&gt; - Removes a player&#x27;s ability to use voice.</td></tr><tr><td><code>sm_silence</code></td><td><code>!silence</code></td><td>관리자 등록</td><td>sm_silence &lt;player&gt; - Removes a player&#x27;s ability to use voice or chat.</td></tr><tr><td><code>sm_ungag</code></td><td><code>!ungag</code></td><td>관리자 등록</td><td>sm_ungag &lt;player&gt; - Restores a player&#x27;s ability to use chat.</td></tr><tr><td><code>sm_unmute</code></td><td><code>!unmute</code></td><td>관리자 등록</td><td>sm_unmute &lt;player&gt; - Restores a player&#x27;s ability to use voice.</td></tr><tr><td><code>sm_unsilence</code></td><td><code>!unsilence</code></td><td>관리자 등록</td><td>sm_unsilence &lt;player&gt; - Restores a player&#x27;s ability to use voice and chat.</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: basecomm.smx
+  Title: Basic Comm Control (Provides methods of controlling communication.)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:21
+  Hash: 2ba825f05fa162a696647b3fb287f35c
+
+[SM] Listing commands for: Basic Comm Control
+  [Name]            [Type]   [Help]
+  sm_gag            admin        sm_gag &lt;player&gt; - Removes a player&#x27;s ability to use chat.
+  sm_mute           admin        sm_mute &lt;player&gt; - Removes a player&#x27;s ability to use voice.
+  sm_silence        admin        sm_silence &lt;player&gt; - Removes a player&#x27;s ability to use voice or chat.
+  sm_ungag          admin        sm_ungag &lt;player&gt; - Restores a player&#x27;s ability to use chat.
+  sm_unmute         admin        sm_unmute &lt;player&gt; - Restores a player&#x27;s ability to use voice.
+  sm_unsilence      admin        sm_unsilence &lt;player&gt; - Restores a player&#x27;s ability to use voice and chat.
+</pre></details></details></article><article data-type="commands"><header><span class="num">60</span><h2>TF2 Boss Spawner</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf2_boss_spawner.smx</code> · v1.0.0</p><p>TF2 기본 할로윈 보스를 소환합니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_hhh</code></td><td><code>!hhh</code></td><td>관리자 등록</td><td>바라보는 곳에 기마병을 소환합니다.</td></tr><tr><td><code>sm_merasmus</code></td><td><code>!merasmus</code></td><td>관리자 등록</td><td>바라보는 곳에 메라즈무스를 소환합니다.</td></tr><tr><td><code>sm_monoculus</code></td><td><code>!monoculus</code></td><td>관리자 등록</td><td>바라보는 곳에 모노큘러스를 소환합니다.</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf2_boss_spawner.smx
+  Title: TF2 Boss Spawner (Spawns TF2&#x27;s native Halloween bosses)
+  Author: OpenAI
+  Version: 1.0.0
+  Status: running
+  Timestamp: 09/13/2026 18:37:32
+  Hash: 43e0ed862690839667fb42bc3a934cd9
+
+[SM] Listing commands for: TF2 Boss Spawner
+  [Name]            [Type]   [Help]
+  sm_hhh            admin        바라보는 곳에 기마병을 소환합니다.
+  sm_merasmus       admin        바라보는 곳에 메라즈무스를 소환합니다.
+  sm_monoculus      admin        바라보는 곳에 모노큘러스를 소환합니다.
+</pre></details></details></article><article data-type="auto"><header><span class="num">61</span><h2>[TF2] Econ Data</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf_econ_data.smx</code> · v0.19.1</p><p>게임 메모리에서 아이템 정보를 읽는 기반 라이브러리입니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf_econ_data.smx
+  Title: [TF2] Econ Data (A library to read item data straight from the game&#x27;s memory.)
+  Author: nosoop
+  Version: 0.19.1
+  URL: https://github.com/nosoop/SM-TFEconData
+  Status: running
+  Timestamp: 10/28/2025 01:15:36
+  Hash: a13c9ae16d5b76130cb4c665bc3558b3
+
+[SM] No commands found for: [TF2] Econ Data
+</pre></details></details></article><article data-type="commands"><header><span class="num">62</span><h2>Fun Commands</h2><span class="badge">running</span></header>
+<p class="meta"><code>funcommands.smx</code> · v1.12.0.7239</p><p>화상·동결 등 플레이어 대상의 추가 관리자 효과 명령입니다.</p>
+<details><summary>명령어 10개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_beacon</code></td><td><code>!beacon</code></td><td>관리자 등록</td><td>sm_beacon &lt;#userid|name&gt; [0/1]</td></tr><tr><td><code>sm_blind</code></td><td><code>!blind</code></td><td>관리자 등록</td><td>sm_blind &lt;#userid|name&gt; [amount] - Leave amount off to reset.</td></tr><tr><td><code>sm_burn</code></td><td><code>!burn</code></td><td>관리자 등록</td><td>sm_burn &lt;#userid|name&gt; [time]</td></tr><tr><td><code>sm_drug</code></td><td><code>!drug</code></td><td>관리자 등록</td><td>sm_drug &lt;#userid|name&gt; [0/1]</td></tr><tr><td><code>sm_firebomb</code></td><td><code>!firebomb</code></td><td>관리자 등록</td><td>sm_firebomb &lt;#userid|name&gt; [0/1]</td></tr><tr><td><code>sm_freeze</code></td><td><code>!freeze</code></td><td>관리자 등록</td><td>sm_freeze &lt;#userid|name&gt; [time]</td></tr><tr><td><code>sm_freezebomb</code></td><td><code>!freezebomb</code></td><td>관리자 등록</td><td>sm_freezebomb &lt;#userid|name&gt; [0/1]</td></tr><tr><td><code>sm_gravity</code></td><td><code>!gravity</code></td><td>관리자 등록</td><td>sm_gravity &lt;#userid|name&gt; [amount] - Leave amount off to reset. Amount is 0.0 through 5.0</td></tr><tr><td><code>sm_noclip</code></td><td><code>!noclip</code></td><td>관리자 등록</td><td>sm_noclip &lt;#userid|name&gt;</td></tr><tr><td><code>sm_timebomb</code></td><td><code>!timebomb</code></td><td>관리자 등록</td><td>sm_timebomb &lt;#userid|name&gt; [0/1]</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: funcommands.smx
+  Title: Fun Commands (Fun Commands)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:22
+  Hash: 23665f7f5ce957d250c0c7d1d9825771
+
+[SM] Listing commands for: Fun Commands
+  [Name]            [Type]   [Help]
+  sm_beacon         admin        sm_beacon &lt;#userid|name&gt; [0/1]
+  sm_blind          admin        sm_blind &lt;#userid|name&gt; [amount] - Leave amount off to reset.
+  sm_burn           admin        sm_burn &lt;#userid|name&gt; [time]
+  sm_drug           admin        sm_drug &lt;#userid|name&gt; [0/1]
+  sm_firebomb       admin        sm_firebomb &lt;#userid|name&gt; [0/1]
+  sm_freeze         admin        sm_freeze &lt;#userid|name&gt; [time]
+  sm_freezebomb     admin        sm_freezebomb &lt;#userid|name&gt; [0/1]
+  sm_gravity        admin        sm_gravity &lt;#userid|name&gt; [amount] - Leave amount off to reset. Amount is 0.0 through 5.0
+  sm_noclip         admin        sm_noclip &lt;#userid|name&gt;
+  sm_timebomb       admin        sm_timebomb &lt;#userid|name&gt; [0/1]
+</pre></details></details></article><article data-type="auto"><header><span class="num">63</span><h2>TF2 Utils</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf2utils.smx</code> · v1.4.0</p><p>다른 플러그인이 사용하는 TF2 유틸리티 라이브러리입니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf2utils.smx
+  Title: TF2 Utils (A plugin utility library for Team Fortress 2.)
+  Author: nosoop
+  Version: 1.4.0
+  URL: https://github.com/nosoop/SM-TFUtils
+  Status: running
+  Timestamp: 03/06/2026 22:23:48
+  Hash: 86d1916ce8db00ec51a724e833b72631
+
+[SM] No commands found for: TF2 Utils
+</pre></details></details></article><article data-type="auto"><header><span class="num">64</span><h2>[ANY] Voice Changer!</h2><span class="badge">running</span></header>
+<p class="meta"><code>voice_changer.smx</code> · v0.2g-vip</p><p>설정에 따라 플레이어의 음성 대사를 변경합니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: voice_changer.smx
+  Title: [ANY] Voice Changer! (Change players&#x27;s voicelines with a cfg.)
+  Author: Benoist3012, Glubbable
+  Version: 0.2g-vip
+  URL: http://steamcommunity.com/id/Benoist3012/
+  Status: running
+  Timestamp: 09/09/2026 05:22:22
+  Hash: df0baa59f2b606857245818c2b5ff8c3
+
+[SM] No commands found for: [ANY] Voice Changer!
+</pre></details></details></article><article data-type="commands"><header><span class="num">65</span><h2>HL2 Strider Ride</h2><span class="badge">running</span></header>
+<p class="meta"><code>monster_strider_ride.smx</code> · v0.1.9</p><p>스트라이더 소환·탑승 및 시점 조절 기능입니다.</p>
+<details><summary>명령어 3개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_striderride</code></td><td><code>!striderride</code></td><td>관리자 등록</td><td>Spawn a rideable Strider. R mounts/dismounts.</td></tr><tr><td><code>sm_striderride_status</code></td><td><code>!striderride_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_striderview</code></td><td><code>!striderview</code></td><td>관리자 등록</td><td>Camera: forward right up, or reset</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: monster_strider_ride.smx
+  Title: HL2 Strider Ride
+  Author: 305like / OpenAI
+  Version: 0.1.9
+  Status: running
+  Timestamp: 09/19/2026 23:40:25
+  Hash: fe5b085e4468c971769594759f293100
+
+[SM] Listing commands for: HL2 Strider Ride
+  [Name]            [Type]   [Help]
+  sm_striderride    admin        Spawn a rideable Strider. R mounts/dismounts.
+  sm_striderride_s  admin        
+  sm_striderview    admin        Camera: forward right up, or reset
+</pre></details></details></article><article data-type="auto"><header><span class="num">66</span><h2>Custom Player Viewmodel Arms</h2><span class="badge">running</span></header>
+<p class="meta"><code>burnice_viewmodel_arms.smx</code> · v2.2.7</p><p>플레이어 모델과 현재 무기에 맞춰 1인칭 팔·뷰모델을 구성합니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: burnice_viewmodel_arms.smx
+  Title: Custom Player Viewmodel Arms (Rebuilds first-person viewmodels with model-specific arms and the active weapon.)
+  Author: OpenAI
+  Version: 2.2.7
+  Status: running
+  Timestamp: 09/13/2026 07:33:12
+  Hash: fc16198fd693ee6e8e6c57a2233a0c21
+
+[SM] No commands found for: Custom Player Viewmodel Arms
+</pre></details></details></article><article data-type="auto"><header><span class="num">67</span><h2>[TF2] Custom Attributes</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf_custom_attributes.smx</code> · v0.4.1</p><p>커스텀 속성을 처리하는 기반 라이브러리입니다.</p>
+<details><summary>명령어 0개 · 상세 보기</summary><p class="muted">등록된 명령어 없음. 자동 동작·설정·다른 플러그인의 API로 사용되는 기능일 수 있습니다.</p><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf_custom_attributes.smx
+  Title: [TF2] Custom Attributes (Minimalistic attribute handling.)
+  Author: nosoop
+  Version: 0.4.1
+  URL: https://github.com/nosoop/SM-TFCustAttr
+  Status: running
+  Timestamp: 03/07/2021 10:18:35
+  Hash: b493d1223d98c76207f83b1d57b5a3a6
+
+[SM] No commands found for: [TF2] Custom Attributes
+</pre></details></details></article><article data-type="commands"><header><span class="num">68</span><h2>NPC Crash Watch</h2><span class="badge">running</span></header>
+<p class="meta"><code>npc_crash_watch.smx</code> · v1.0.0</p><p>게임 규칙 포인터 변화와 NPC·플레이어 이벤트를 기록하는 크래시 관찰기입니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_npccrash_status</code></td><td><code>!npccrash_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: npc_crash_watch.smx
+  Title: NPC Crash Watch
+  Author: 305like / OpenAI
+  Version: 1.0.0
+  Status: running
+  Timestamp: 09/19/2026 18:12:41
+  Hash: 2ed17a1a46b8fb7e7e22ffa6d483606d
+
+[SM] Listing commands for: NPC Crash Watch
+  [Name]            [Type]   [Help]
+  sm_npccrash_stat  admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">69</span><h2>Smug dance</h2><span class="badge">running</span></header>
+<p class="meta"><code>smugdance.smx</code> · v0.01</p><p>Smug dance 도발/춤 기능입니다. 구체적인 동작은 도움말이 제공되지 않습니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_smug</code></td><td><code>!smug</code></td><td>일반 명령 등록</td><td>SMUG.</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: smugdance.smx
+  Title: Smug dance (asd)
+  Author: Moonly Days
+  Version: 0.01
+  URL: rcatf2.ru
+  Status: running
+  Timestamp: 08/01/2026 15:20:06
+  Hash: cdc5640d8ba9e96bedf0609cf4689ee3
+
+[SM] Listing commands for: Smug dance
+  [Name]            [Type]   [Help]
+  sm_smug           console      SMUG.
+</pre></details></details></article><article data-type="commands"><header><span class="num">70</span><h2>[TF2] Model Manager</h2><span class="badge">running</span></header>
+<p class="meta"><code>tf2_modelmanager.smx</code> · v1.0.4-vip-priority</p><p>커스텀 플레이어 모델의 선택·적용·관리 기능입니다.</p>
+<details><summary>명령어 10개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>em</code></td><td>—</td><td>일반 명령 등록</td><td>Shows the model manager menu</td></tr><tr><td><code>equip</code></td><td>—</td><td>일반 명령 등록</td><td>Shows the model manager menu</td></tr><tr><td><code>equipmodels</code></td><td>—</td><td>일반 명령 등록</td><td>Shows the model manager menu</td></tr><tr><td><code>mm</code></td><td>—</td><td>일반 명령 등록</td><td>Shows the model manager menu</td></tr><tr><td><code>tf_models</code></td><td>—</td><td>일반 명령 등록</td><td>Shows the model manager menu</td></tr><tr><td><code>tf_models_equip</code></td><td>—</td><td>관리자 등록</td><td>Forces to equip a model onto a client.</td></tr><tr><td><code>tf_models_lock</code></td><td>—</td><td>관리자 등록</td><td>Locks/unlocks the client&#x27;s model so it can&#x27;t be changed.</td></tr><tr><td><code>tf_models_override</code></td><td>—</td><td>관리자 등록</td><td>Enables restriction overriding for the client.</td></tr><tr><td><code>tf_models_reload</code></td><td>—</td><td>관리자 등록</td><td>Reparses the items file and rebuilds the model list.</td></tr><tr><td><code>tf_models_remove</code></td><td>—</td><td>관리자 등록</td><td>Forces to remove a model on the client.</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tf2_modelmanager.smx
+  Title: [TF2] Model Manager ([TF2] Model Manager)
+  Author: FlaminSarge (based on Damizean&#x27;s TF2 Equipment Manager)
+  Version: 1.0.4-vip-priority
+  URL: http://forums.alliedmods.net/
+  Status: running
+  Timestamp: 09/09/2026 05:22:22
+  Hash: e31dc36d87b0f75026a24e4912579417
+
+[SM] Listing commands for: [TF2] Model Manager
+  [Name]            [Type]   [Help]
+  em                console      Shows the model manager menu
+  equip             console      Shows the model manager menu
+  equipmodels       console      Shows the model manager menu
+  mm                console      Shows the model manager menu
+  tf_models         console      Shows the model manager menu
+  tf_models_equip   admin        Forces to equip a model onto a client.
+  tf_models_lock    admin        Locks/unlocks the client&#x27;s model so it can&#x27;t be changed.
+  tf_models_overri  admin        Enables restriction overriding for the client.
+  tf_models_reload  admin        Reparses the items file and rebuilds the model list.
+  tf_models_remove  admin        Forces to remove a model on the client.
+</pre></details></details></article><article data-type="commands"><header><span class="num">71</span><h2>Nextmap</h2><span class="badge">running</span></header>
+<p class="meta"><code>nextmap.smx</code> · v1.12.0.7239</p><p>다음 맵을 추적하고 조회합니다.</p>
+<details><summary>명령어 2개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>listmaps</code></td><td>—</td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_maphistory</code></td><td><code>!maphistory</code></td><td>관리자 등록</td><td>Shows the most recent maps played</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: nextmap.smx
+  Title: Nextmap (Provides nextmap and sm_nextmap)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:21
+  Hash: 7813a338c2d15b0d4ce30dd30415a9ac
+
+[SM] Listing commands for: Nextmap
+  [Name]            [Type]   [Help]
+  listmaps          console      
+  sm_maphistory     admin        Shows the most recent maps played
+</pre></details></details></article><article data-type="commands"><header><span class="num">72</span><h2>Client Preferences</h2><span class="badge">running</span></header>
+<p class="meta"><code>clientprefs.smx</code> · v1.12.0.7239</p><p>사용자 설정을 저장하고 설정 메뉴를 제공합니다.</p>
+<details><summary>명령어 2개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_cookies</code></td><td><code>!cookies</code></td><td>일반 명령 등록</td><td>sm_cookies &lt;name&gt; [value]</td></tr><tr><td><code>sm_settings</code></td><td><code>!settings</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: clientprefs.smx
+  Title: Client Preferences (Client preferences and settings menu)
+  Author: AlliedModders LLC
+  Version: 1.12.0.7239
+  URL: http://www.sourcemod.net/
+  Status: running
+  Timestamp: 06/11/2026 01:13:21
+  Hash: accd4983e551b044409f871e7344bd57
+
+[SM] Listing commands for: Client Preferences
+  [Name]            [Type]   [Help]
+  sm_cookies        console      sm_cookies &lt;name&gt; [value]
+  sm_settings       console      
+</pre></details></details></article><article data-type="commands"><header><span class="num">73</span><h2>Demopan Test</h2><span class="badge">running</span></header>
+<p class="meta"><code>demopan_test.smx</code> · v1.4.4</p><p>독립형 데모팬 보스 변신 테스트입니다.</p>
+<details><summary>명령어 1개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_demopan</code></td><td><code>!demopan</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: demopan_test.smx
+  Title: Demopan Test (Standalone Demopan boss test)
+  Author: 305like / OpenAI
+  Version: 1.4.4
+  Status: running
+  Timestamp: 09/20/2026 21:03:24
+  Hash: e41f12bda6391eaba88cad1ef47ab460
+
+[SM] Listing commands for: Demopan Test
+  [Name]            [Type]   [Help]
+  sm_demopan        console      
+</pre></details></details></article><article data-type="commands"><header><span class="num">74</span><h2>World Delete Trace</h2><span class="badge">running</span></header>
+<p class="meta"><code>world_delete_trace.smx</code> · v1.0.0</p><p>월드·게임 규칙 엔티티 삭제 요청을 감시하고 호출 스택 및 접속·종료 기록을 남깁니다.</p>
+<details><summary>명령어 2개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_worlddelete_selftest</code></td><td><code>!worlddelete_selftest</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_worlddelete_status</code></td><td><code>!worlddelete_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: world_delete_trace.smx
+  Title: World Delete Trace
+  Author: 305like / OpenAI
+  Version: 1.0.0
+  Status: running
+  Timestamp: 09/20/2026 12:08:39
+  Hash: f72983d4d50ef5c9f1ae7c48171bb4a1
+
+[SM] Listing commands for: World Delete Trace
+  [Name]            [Type]   [Help]
+  sm_worlddelete_s  admin        
+  sm_worlddelete_s  admin        
+</pre></details></details></article><article data-type="commands"><header><span class="num">75</span><h2>TV Missile</h2><span class="badge">running</span></header>
+<p class="meta"><code>tv_missile.smx</code> · v2.2.0</p><p>노트북 화면으로 조종하는 수평 비행 TV 미사일입니다.</p>
+<details><summary>명령어 5개 · 상세 보기</summary><div class="scroll"><table><thead><tr><th>콘솔 명령</th><th>채팅 표기*</th><th>등록 유형</th><th>서버 등록 도움말 / 인수</th></tr></thead><tbody><tr><td><code>sm_tvmissile</code></td><td><code>!tvmissile</code></td><td>일반 명령 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_tvmissile_camera</code></td><td><code>!tvmissile_camera</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_tvmissile_maxspeed</code></td><td><code>!tvmissile_maxspeed</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_tvmissile_selftest</code></td><td><code>!tvmissile_selftest</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr><tr><td><code>sm_tvmissile_status</code></td><td><code>!tvmissile_status</code></td><td>관리자 등록</td><td>등록 도움말 없음</td></tr></tbody></table></div><details class="evidence"><summary>서버 원문 근거</summary><pre>  Filename: tv_missile.smx
+  Title: TV Missile (Laptop-controlled horizontal TV missile)
+  Author: Refirser
+  Version: 2.2.0
+  Status: running
+  Timestamp: 09/21/2026 04:24:11
+  Hash: 575199ee2c3e8bb1e979151cd4f1cd37
+
+[SM] Listing commands for: TV Missile
+  [Name]            [Type]   [Help]
+  sm_tvmissile      console      
+  sm_tvmissile_cam  admin        
+  sm_tvmissile_max  admin        
+  sm_tvmissile_sel  admin        
+  sm_tvmissile_sta  admin        
+</pre></details></details></article><footer>읽기 전용 목록 수집 · 플러그인 변경/로드/언로드/서버 재시작 없음 · 외부 스크립트·폰트·추적기 없음</footer></main><script>
+const cards=[...document.querySelectorAll('article')],q=document.querySelector('#search'),filter=document.querySelector('#filter');
+function update(){let n=0;const term=q.value.trim().toLowerCase();for(const c of cards){c.hidden=!(c.textContent.toLowerCase().includes(term)&&(filter.value==='all'||filter.value===c.dataset.type));if(!c.hidden)n++;}document.querySelector('#count').textContent=`${n} / ${cards.length}개 표시`;}
+q.addEventListener('input',update);filter.addEventListener('change',update);document.querySelector('#expand').onclick=()=>cards.filter(c=>!c.hidden).forEach(c=>c.querySelector('details').open=true);document.querySelector('#collapse').onclick=()=>document.querySelectorAll('details').forEach(c=>c.open=false);update();
+</script></body></html>
